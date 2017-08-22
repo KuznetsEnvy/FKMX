@@ -53,9 +53,9 @@
         {% if product.price_varies %}
         <span class="from">{{ 'products.general.from' | t }}</span>
         {% endif %}
-        <span class="amount">{{ product.price | money }}</span>
+        <span class="amount">{{ product.price | money_with_currency }}</span>
         {% if product.compare_at_price_max > product.price %}
-        <del>{{ product.compare_at_price | money }}</del>
+        <del>{{ product.compare_at_price | money_with_currency }}</del>
         {% endif %}
       </div>
     </div>
