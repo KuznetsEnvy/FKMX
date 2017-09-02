@@ -6,26 +6,6 @@
          {{ pages[page].content | replace: 'fullwidth"', '" data-fullwidth="true"' }}
       </div>
       <div class="win-form">
-        <!--form  action="/pages/thank-you" method="post" id="" class="" >
-          <div class="inner-form">
-            <div class="input-row">        
-              <input type="text" placeholder="Your Name" value="" name="customer[name]" id="customer_name" class="text">
-            </div>
-            <div class="input-row">        
-              <input type="email" value="" placeholder="Email" name="customer[email]" id="customer_email" class="email">
-            </div>
-            <div class="input-row">            
-              <div class="check">
-                <input type="hidden" value="true" name="customer" id="customer_checkbox" class="checkbox">
-              </div>
-              <p class="terms">By entering I accept the <a href="/pages/terms-conditions">Terms & Conditions</a></p>
-            </div>
-          </div>
-          <div class="input-row">
-            <input class="btn enter" type="submit" value="Enter">
-          </div>          
-        </form-->
-
         <!-- Begin MailChimp Signup Form -->
         <div id="mc_embed_signup">
           <form action="//floatiekings.us13.list-manage.com/subscribe/post?u=48982d426a910167c31a85aa0&amp;id=bc341c654f&SIGNUP=5000GiveawayUS" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
@@ -33,12 +13,12 @@
               <div class="inner-form">
                 <div class="input-row">
                   <div class="mc-field-group">
-                    <input type="text" value="" name="FNAME" class="" id="mce-FNAME" placeholder="Your Name">
+                    <input type="text" value="" name="FNAME" class="" id="mce-FNAME" placeholder="{{ 'pages.forms.your_name' | t }}">
                   </div>
                 </div>
                 <div class="input-row">
                   <div class="mc-field-group">
-                    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email">
+                    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="{{ 'pages.forms.email' | t }}">
                   </div>
                 </div>
 
@@ -50,7 +30,7 @@
               </div>
               <div class="input-row">
                 <div class="clear">
-                  <input type="submit" value="Enter" name="subscribe" id="mc-embedded-subscribe" class="button btn enter">
+                  <input type="submit" value="{{ 'pages.forms.enter' | t }}" name="subscribe" id="mc-embedded-subscribe" class="button btn enter">
                 </div>
               </div>
             </div>

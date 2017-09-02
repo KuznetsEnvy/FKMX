@@ -1,8 +1,8 @@
 {
   "general": {
     "404": {
-      "title": "Page not found",
-      "subtext_html": "Sorry, we couldn't find this page. <a href=\"\/\">Continue shopping<\/a> or <a href=\"\/pages\/support\">report a problem<\/a>."
+      "title": "Página no encontrada",
+      "subtext_html": "Lo siento, no pudimos encontrar esta página. <a href=\"\/\">Continúa  comprando<\/a> <a href=\"\/pages\/support\">reporta el problema<\/a>."
     },
     "pagination": {
       "summary": "Page {{ current_page }} of {{ pages }}"
@@ -36,10 +36,10 @@
       "menu": "Menu"
     },
     "cart_summary": {
-      "continue_shopping": "Continue shopping",
-      "title": "Your Order",
-      "cart": "View Cart",
-      "checkout": "Checkout",
+      "continue_shopping": "Seguir comprando",
+      "title": "Tu pedido",
+      "cart": "Ver carrito",
+      "checkout": "Pagos",
       "subtotal": "Subtotal:"
     },
     "customer": {
@@ -98,35 +98,36 @@
   },
   "cart": {
     "general": {
-      "title": "My Cart",
-      "title_short": "Cart",
-      "review_cart": "REVIEW YOUR CART",
-      "empty": "YOUR CART IS EMPTY",
-      "no_items": "You have no items in your cart",
-      "update": "Update",
-      "remove": "Remove",
-      "continue": "Continue shopping",
-      "keep": "Keep shopping",
-      "click_to_continue_html": "<a href=\"\/\">Click here<\/a> to continue shopping.",
-      "checkout": "Checkout",
-      "to_checkout": "PROCEED TO CHECKOUT"
+      "title": "Mi carrito",
+      "title_short": "Carrito",
+      "review_cart": "REVISA TU CARRITO",
+      "empty": "TU CARRITO ESTÁ VACÍO",
+      "no_items": "No tienes artículos en tu carrito",
+      "update": "Actualizar",
+      "remove": "Quitar",
+      "continue": "Seguir comprando",
+      "keep": "Sigue comprando",
+      "click_to_continue_html": "<a href=\"\/\">Haz clic aquí<\/a> para seguir comprando.",
+      "checkout": "Pagos",
+      "to_checkout": "PROCEDER CON EL PAGO"
     },
     "label": {
-      "description": "Items",
-      "price": "Price",
-      "quantity": "Quantity",
+      "description": "Artículos",
+      "price": "Precio",
+      "quantity": "Cantidad",
       "note": "Add a note to your order",
-      "subtotal": "Subtotal before delivery",
+      "subtotal": "Subtotal previo al envío",
       "total": "Total"
     },
     "shipping": {
-      "shipping-banner_html": "<b>Free shipping<\/b> for all orders over",
-      "got_free_shipping": "YOU HAVE EARNED FREE SHIPPING",
-      "add_for_free_shipping": "Add {{ dif }} for Free shipping.",
-      "add_for_free_shipping_html": "Add {{ dif }} for <b>Free shipping<\/b>.",
-      "free_shipping_added": "FREE SHIPPING added!",
-      "almost_there": "You're almost there to qualify for FREE SHIPPING!"
+      "shipping-banner_html": "<b>Envío gratuito<\/b> en pedidos de más de",
+      "got_free_shipping": "TE GANASTE ENVíO GRATUITO",
+      "add_for_free_shipping": "Añade {{ dif }} para envío gratuito.",
+      "add_for_free_shipping_html": "Añade {{ dif }} para <b>envío gratuito<\/b>.",
+      "free_shipping_added": "ENVÍO GRATUITO añadido.",
+      "almost_there": "¡Estas a un paso de obtener ENVíO GRATUITO!"
     }
+
   },
   "collections": {
     "general": {
@@ -154,7 +155,7 @@
     "collection_list": {
       "title": "Collections",
       "sidebar_title": "Categories",
-      "pump_banner": "Accessories"
+      "pump_banner": "Accesorios"
     },
     "sidebar": {
       "title": "Categories"
@@ -174,32 +175,37 @@
   },
   "pages": {
     "support": {
-      "here_to_help_html": "at <span>floatie kings<\/span> we are here to help you!",
-      "track_order": "track your order",
-      "email_support": "Email-support",
-      "wholesale": "wholesale",
-      "general_inquiries": "general inquiries"
+      "here_to_help_html": "En <span>Floatie Kings,<\/span> ¡estamos para ayudarte!",
+      "track_order": "Rastrea tu pedido",
+      "email_support": "Soporte por email",
+      "wholesale": "Ventas al por mayor",
+      "general_inquiries": "Consultas Generales"
     },
     "win_cash": {
-      "want_to_win_html": "WANT TO <strong>WIN $5000 CASH<\/strong>",
-      "enter_here": "ENTER HERE",
-      "submit_details_html": "<b>submit<\/b> your details to enter"
+      "want_to_win_html": "Quiero <strong>ganar 5000 USD en efectivo<\/strong>",
+      "enter_here": "Ingresa aqui",
+      "submit_details_html": "<b>Envia<\/b> tus detalles para ingresar"
     },
     "upsell": {
-      "block_title_html": "<span class=\"content\">GOOD NEWS!<\/span> YOUR CART QUALIFIES FOR THESE <strong>ADD ONS<\/strong>",
-      "normal_price": "Normal Price"
+      "block_title_html": "<span class=\"content\">Buenas noticias!<\/span> Tu carrito califica para acceder a estos <strong>complementos<\/strong>",
+      "normal_price": "Precio normal"
     },
     "forms": {
-      "your_name": "Your Name",
-      "email": "Email",
-      "enter": "Enter"
+      "your_name": "Tu nombre",
+      "email": "Correo electrónico",
+      "enter": "Ingresa"
     },
     "buttons": {
-      "enter": "Enter",
-      "select": "Select",
-      "selected": "Selected",
-      "see_more": "See more"
+      "enter": "Ingresa",
+      "select": "Seleccionar",
+      "selected": "Seleccionado",
+      "see_more": "Ver más"
     }
+  },
+  "support_page": {
+    "messages": {
+    }
+
   },
   "products": {
     "general": {
@@ -211,21 +217,21 @@
       "back_to_html": "Back to:",
       "previous": "Previous",
       "next": "Next",
-      "product_unavailable_html": "Notify Me When In Stock",
-      "quantity": "Quantity",
-      "add_to_cart_html": "Add to Cart",
+      "product_unavailable_html": "Notifícame cuando este disponible",
+      "quantity": "Cantidad",
+      "add_to_cart_html": "Agregar al Carrito",
       "pick_a": "Pick a",
-      "backorder": "is backordered. We will ship it separately in 10 to 15 days.",
-      "adding_to_cart": "Adding to cart...",
-      "added_to_cart_btn": "Added",
+      "backorder": "esta retrasado. Te lo enviaremos en 10 a 15 dias.",
+      "adding_to_cart": "Añadiendo al carrito...",
+      "added_to_cart_btn": "Añadido",
       "sku": "SKU:",
-      "related_title": "YOU MIGHT ALSO BE INTERESTED IN",
-      "hand_made_html": "<span>Hand<\/span> <span>made<\/span>",
-      "high_quality_html": "<span>High<\/span> <span>quality<\/span>",
-      "durable_materials_html": "<span>Durable<\/span> <span>materials<\/span>",
-      "easy_setup_html": "<span>Easy<\/span> <span>setup<\/span>",
-      "secure_checkout_html": "<span>Secure<\/span> <span>checkout<\/span>",
-      "fast_shipping_html": "<span>Fast<\/span> <span>shipping<\/span>"
+      "related_title": "Podrías estar interesado en",
+      "hand_made_html": "<span>Hecho<\/span> <span>a mano<\/span>",
+      "high_quality_html": "<span>Alta<\/span> <span>Calidad<\/span>",
+      "durable_materials_html": "<span>Materiales<\/span> <span>durables<\/span>",
+      "easy_setup_html": "<span>Instalacion<\/span> <span>sencilla<\/span>",
+      "secure_checkout_html": "<span>Compra<\/span> <span>segura<\/span>",
+      "fast_shipping_html": "<span>Envío<\/span> <span>Rápido<\/span>"
     },
     "variant": {
       "out_of_stock": "out of stock",
