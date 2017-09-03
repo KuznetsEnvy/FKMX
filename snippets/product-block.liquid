@@ -10,9 +10,7 @@
   <div class="product-grid-item-inside">
   <div class="image">
     <div class="inner">
-      
-      
-      <a class="hover" href="{{product.url}}"><img src="{{ product.featured_image | product_img_url: 'grande' | split:'?' | first }}" /> </a>
+
       <a class="none-hover" href="{{product.url}}"><img src="{{ product.images.last | product_img_url: 'large' | split:'?' | first }} "/></a>
       
       {% if settings.prod_quick_buy_show %}
