@@ -1,7 +1,7 @@
 // to defer the loading of stylesheets
 // just add it right before the </body> tag
 // and before any javaScript file inclusion (for performance)
-function loadStyleSheet(src){
+function loadStyleSheet(src) {
     if (document.createStyleSheet) document.createStyleSheet(src);
     else {
         var stylesheet = document.createElement('link');
@@ -13,5 +13,5 @@ function loadStyleSheet(src){
 }
 
 loadStyleSheet("{{ 'styles.scss.css' | asset_url }}");
-loadStyleSheet("{{ 'jquery.bxslider.css' | asset_url }}");
+loadStyleSheet("{{ 'jquery.bxslider.css' | asset_url | split:'?' | first }}");
 loadStyleSheet("https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css");

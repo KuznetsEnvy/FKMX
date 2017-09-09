@@ -107,7 +107,7 @@
     <section id="aron-kai" class="border-top section bottom-banner">
     	<div class="container">
             <div class="banner">
-                <img src="{{ 'aaronKai-banner.png' | asset_url | split:"?" | first }}" alt="Home AaronKai Banner" />
+                <img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ 'aaronKai-banner.png' | asset_url | split:"?" | first }}" alt="Home AaronKai Banner" />
             </div>
         </div>    
 	</section> 
@@ -142,7 +142,7 @@
     <section class="border-top section bottom-banner">
     	<div class="container">
             <div class="banner">
-                <img src="{{ 'bottom-banner_new.png' | asset_url | split:"?" | first }}" alt="Home Banner" />
+                <img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ 'bottom-banner_new.png' | asset_url | split:"?" | first }}" alt="Home Banner" />
             </div>
         </div>    
 	</section> 
@@ -442,7 +442,7 @@ J: Custom HTML
       {% for i in (1..9) %}
           <div class="grid-item {% if i == 4 %} grid-item--width2 grid-item--height2 {% endif %}">
             <a href="https://www.instagram.com/{{ settings.homepage_insta_acct }}/" target="_blank">
-              <img class="js-backimg" src="https://cdn.shopify.com/s/files/1/0934/6050/files/newinstag_{{ i }}.jpg" alt="" >
+              <img class="js-backimg" src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="https://cdn.shopify.com/s/files/1/0934/6050/files/newinstag_{{ i }}.jpg" alt="" >
             </a>
           </div>
       {% endfor %}
@@ -473,7 +473,7 @@ J: Custom HTML
           {% for i in (1..9) %}
               <div>
                 <a href="https://www.instagram.com/{{ settings.homepage_insta_acct }}/" target="_blank">
-                  <img class="js-backimg" src="https://cdn.shopify.com/s/files/1/0934/6050/files/newinstag_{{ i }}.jpg" alt="" >
+                  <img class="js-backimg" src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="https://cdn.shopify.com/s/files/1/0934/6050/files/newinstag_{{ i }}.jpg" alt="" >
                 </a>
               </div>
           {% endfor %}

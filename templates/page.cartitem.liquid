@@ -15,7 +15,7 @@
       <div class="cart-summary-item-list ft ftw">
         {% for item in cart.items %}
           <div class="cart-summary-item ftr cf">
-            <span class="image ftc">{{ item | img_url: 'small' | img_tag: item.title | link_to: item.url }}</span>
+            <span class="image ftc"><a href="{{ item.url }}" title=""><img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ item | img_url: 'small' }}" alt="{{ item.title }}"></a></span>
             <span class="title-variant ftc">
           <a class="title" href="{{ item.url }}">{{ item.product.title }}</a>
               {% unless item.variant.title contains 'Default' %}

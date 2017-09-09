@@ -68,10 +68,10 @@
           <div class="row">
             <input type="submit" style="display:none;" class="alt" id="update-cart" name="update" value="{{ 'cart.general.update' | t }}"/>
             <div class="full column align-right">
-              <div class="cart_total_left">
-                <label for="checkout">{{ 'cart.label.subtotal' | t }}</label>
+              <div class="subtotal-wrap">
+                <div class="cart_total_left"><label for="checkout">{{ 'cart.label.subtotal' | t }}</label></div>
+                <h2 class="cart_total_right">{{ cart.total_price | money }}</h2>
               </div>
-              <h2 class="cart_total_right">{{ cart.total_price | money }}</h2>
 
               {% if free_shipping_from > c %}
                 <div class="shippingmsg2">
@@ -91,7 +91,7 @@
         {% endif %}
 
         <div class="shipping-banner cart">
-          <div class="nn-secondary-middle">{{ 'cart.shipping.shipping-banner_html' | t}} {{ settings.free_shipping_from | money_with_currency }}</div>
+          <div class="nn-secondary-middle">{{ 'cart.shipping.shipping-banner_html' | t}} {{ settings.free_shipping_from | money }}</div>
         </div>
         <div class="border-bottom">
           <div class="row">

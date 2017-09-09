@@ -1,6 +1,6 @@
 $(function($){
   /// Extensions
-  
+
   $.fn.replaceImageWithOneOfNewSrc = function(newSrc) {
     //Avoids blank.gif breaking imagesLoaded with Firefox event bug
     var newTag = $(this).clone().wrap('<div />').parent().html();
@@ -9,7 +9,7 @@ $(function($){
     $(this).after($newTag).remove();
     return $newTag;
   };
-  
+
   //Fade out image, replace src, fade back in when loaded
   $.fn.fadeToAnotherImage = function(newSrc, callback){
     var $img = $(this);
@@ -33,29 +33,29 @@ $(function($){
       return false;
     }
   };
-  
+
   function isMobile() {
     return $(window).width() < 768; //blunt check for mobile view
   }
-  
-  
+
+
   /// Restyle any dropdowns
-  
+
   $('select:not(#product-select)').selectReplace().closest('.selector-wrapper').addClass('has-pretty-select');
-  
-  
+
+
   /// Toggle classes
-  
+
   $(document).on('click', '[data-toggle-class]', function(e){
     e.preventDefault();
     var spl = $(this).data('toggle-class').split('|');
     $(spl[1]).toggleClass(spl[0]);
     $(window).trigger('resize');
   });
-  
-  
+
+
   /// Close side-modals
-  
+
   function sideModTransOutHelper() {
     //Speed up
     $('body').addClass('sidepanel-transitioning');
@@ -69,10 +69,10 @@ $(function($){
     $('body').removeClass('show-cart-summary show-mobile-nav');
     return false;
   });
-  
-  
+
+
   /// Toggles for side-modals
-  
+
   $(document).on('click', '.toggle-mob-nav, body.show-mobile-nav #docked-toolbar', function(){
     //prep for reveal
     $('#cart-summary').removeClass('active');
@@ -119,10 +119,10 @@ $(function($){
         return false;
     });
   {% endif %}
-  
-  
+
+
   /// Mobile sub-nav
-  
+
   var navStack = [];
   $('#mobile-nav').on('click', '.open-sub-nav', function(){
     // hide current & add to stack
@@ -144,17 +144,17 @@ $(function($){
     $(this).closest('li').find('button').click();
     return false;
   });
-  
-  
+
+
   /// Dropdowns that redirect
-  
+
   $('select.redirect').on('change', function(){
     window.location = $(this).val();
   });
-  
-  
+
+
   /// Slideshows
-  
+
   $('.flexslider').each(function(){
     var slideshowOpts = {
      //  slideshow: !isMobile(), // animate slider automatically
@@ -166,7 +166,7 @@ $(function($){
     };
 
     var $slider = $(this).toggleClass('one-slide', $(this).find('.slides > li').length == 1);
-    
+
     //Change this to false to prevent transitions on slideshow text
     $(this).imagesLoaded(function(){
       $('.flexslider .line-1, .flexslider .line-2, .flexslider .line-3').addClass('trans-out');
@@ -186,23 +186,23 @@ $(function($){
       $slider.flexslider(slideshowOpts);
     });
   });
-  
-  
+
+
   /// Ensuring nav responds nicely to taps/clicks/hovers
-  
+
   $('.main-nav li.dropdown > a').attr('aria-haspopup', 'true'); //ie
   $('.main-nav > ul > li.dropdown').doubleTapToGo(); //other touchscreen taps
   $('.main-nav').on('click', 'li.drop-uber .sub-nav-item:not(.has-dropdown) a', function(){
     window.location = $(this).attr('href');
   });
-  
+
   // Sub sub nav
   $('.main-nav').on('click', '.sub-nav-item.has-dropdown > a', function(){
     $(this).siblings().slideToggle(250);
     return false;
   });
-  
-  
+
+
   // Ensuring sub nav dropdown does not go off the RHS of page
   $(window).on('debouncedresize load', function(){
     setTimeout(function(){
@@ -217,7 +217,7 @@ $(function($){
       });
     }, 50);
   });
-  
+
   // Ensure no columns go over the per-column quota
   var perCol = {{ settings.nav_col_limit | default: 0 }};
   if(perCol > 0) {
@@ -230,10 +230,10 @@ $(function($){
       $(this).addClass('cols-'+cols);
     });
   }
-  
+
 
   /// Nav images
-  
+
   var ios = navigator.userAgent.toLowerCase().match(/(iphone|ipod|ipad)/); // have to skip on iOS; it detects dom-change on hover and prevents click
   if (!(ios)) {
     $('.main-nav').on('mouseenter loadimg', '.sub-nav.has-img .sub-nav-item-link', function(){
@@ -249,10 +249,10 @@ $(function($){
       $('<img/>')[0].src = $(this).data('img');
     }).first().trigger('loadimg');
   });
-  
-  
+
+
   /// In-page links
-  
+
   $(document).on('click', 'a[href^="#"]:not([href="#"])', function(){
     var $target = $($(this).attr('href')).first();
     if($target.length == 1) {
@@ -262,17 +262,17 @@ $(function($){
     }
     return false;
   });
-  
-  
+
+
   /// Revealables (sharing, cart in header, sidebar)
-  
+
   $(document).on('click', '[data-revealable]', function(){
     $(this).closest($(this).data('revealable')).toggleClass('show');
     $(window).trigger('resize');
     return false;
   });
-  
-  
+
+
   /// Show a short-lived text popup above an element
   window.showQuickPopup = function(message, $origin){
     var $popup = $('<div class="simple-popup"/>');
@@ -284,14 +284,14 @@ $(function($){
       $(this).remove();
     });
   };
-  
+
   /// Ajax product forms
   var shopifyAjaxAddURL = '/cart/add.js';
   var shopifyAjaxCartURL = '/cart.js';
   var shopifyAjaxStorePageURL = '/search';
 
 
-  
+
   function updateCartSummaries() {
     $('#cart-summary').addClass('updating');
     $.get(shopifyAjaxStorePageURL, function(data){
@@ -312,8 +312,8 @@ $(function($){
     });
 
   }
-  
-  {% if settings.prod_ajax == 'ajax' %} 
+
+  {% if settings.prod_ajax == 'ajax' %}
   $(document).on('submit', 'form[action="/cart/add"]:not(.noAJAX)', function(e) {
     //Skip on mobile
     /*if($(window).width() < 768) {
@@ -325,7 +325,7 @@ $(function($){
       var contentFunc = $(this).is('button') ? 'html' : 'val';
       $(this).data('previous-value', $(this)[contentFunc]())[contentFunc]({{ 'products.product.adding_to_cart' | t | json }});
     });
-    
+
     //Add to cart
     $.post(shopifyAjaxAddURL, $form.serialize(), function(itemData) {
       //Enable add button
@@ -338,7 +338,7 @@ $(function($){
           $btn.removeAttr('disabled')[contentFunc]($btn.data('previous-value'));
         }, 4000);
       }).first();
-      
+
       $('#overlay').toggleClass('is-active');
       $('#cart-summary').toggle('slide',{direction:'right'},200);
       //Update persistent cart summaries
@@ -346,7 +346,7 @@ $(function($){
       if(isMobile()){
         setTimeout(function(){ $('#overlay').toggleClass('is-active'); $('#cart-summary').toggle('slide',{direction:'right'},200); }, 5000);
       }
-      
+
     }, 'text').error(function(data) {
       //Enable add button
       var $firstBtn = $form.find(':submit').removeAttr('disabled').each(function(){
@@ -354,7 +354,7 @@ $(function($){
         var contentFunc = $btn.is('button') ? 'html' : 'val';
         $btn[contentFunc]($btn.data('previous-value'))
       }).first();
-      
+
       //Not added, show message
       if(typeof(data) != 'undefined' && typeof(data.status) != 'undefined') {
         var jsonRes = $.parseJSON(data.responseText);
@@ -377,7 +377,7 @@ $(function($){
     //$statusDivs.removeClass('updating');
   });
 
-  
+
   $(document).bind('click', '#add', function(){
     Shopify.onItemAdded = function(cart) {
       jQuery.getJSON('/cart.js', function(cart) {
@@ -385,10 +385,10 @@ $(function($){
       });
     };
   });
-  
-  
+
+
   /// Side-cart quantities
-  
+
   $(document).on('change', '#cart-summary .cart-summary-item input', function(){
     var $statusDivs = $(this).closest('.cart-summary-item').add('#cart-summary').addClass('updating');
     var quantities = [];
@@ -405,9 +405,9 @@ $(function($){
         $statusDivs.removeClass('updating')
    	});
   });
-  
+
   /// Heights in grids
-  
+
   $(window).on('debouncedresize load', function(){
     $('[data-normheights]').each(function(){
       var $items = $(this).find($(this).data('normheights')),
@@ -434,8 +434,8 @@ $(function($){
       $(row).css('min-height', tallest);
     });
   });
-  
-  
+
+
   /// Product form
   {% if template contains 'product' %}
   //selectCallback - a function required by Shopify
@@ -449,9 +449,9 @@ $(function($){
       } else {
         jQuery('#price').html(Shopify.formatMoney(variant.price));
       }
-      
+
       if (variant.available) {
-	
+
         // Enabling add to cart button.
         jQuery('#add').removeClass('disabled').removeAttr('disabled').html({{ 'products.product.add_to_cart_html' | t | json }});
 
@@ -468,7 +468,7 @@ $(function($){
         jQuery('#backorder').addClass('hidden');
         jQuery('#add').html({{ 'products.variant.out_of_stock' | t | json }}).addClass('disabled').attr('disabled', 'disabled');
       }
-      
+
     } else {
       // variant doesn't exist.
       var html = {{ 'products.variant.non_existent' | t | json }};
@@ -487,10 +487,10 @@ $(function($){
       //Find and click matching thumb
       $('.thumbnails a.thumbnail').filter('[href="' + newImage + '"]').trigger('click');
     }
-    
+
     $('#sku').html(!variant ? '' : variant.sku);
   };
-  
+
   //Initialise product form inputs
   $(document).on('initproduct', '#product-form', function(){
     var $select = $(this).find('#product-select');
@@ -513,7 +513,7 @@ $(function($){
       $(this).find('.selector-wrapper select').filter(function(){
         return toMakeClicky.indexOf(',' +$(this).siblings('label').html() + ',') >= 0;
       }).clickyBoxes().parent().addClass('has-clickyboxes');
-      
+
       //If only one variant option, add sold-out states to clicky boxes
       if(productData.options.length == 1) {
         for(var i=0; i<productData.variants.length; i++) {
@@ -522,7 +522,7 @@ $(function($){
           }
         }
       }
-      
+
       {% if settings.show_prod_pick_a %}
       //Show the 'Pick a X' option
       if(!$('#product-variants').hasClass('hidden')) {
@@ -531,14 +531,14 @@ $(function($){
         }
       }
       {% endif %}
-      
+
       //Style other visible select dropdowns
       $('select:not(#product-select)').selectReplace().closest('.selector-wrapper').addClass('has-pretty-select');
     }
   });
   $('#product-form').trigger('initproduct'); // Trigger on page load
-  
-  
+
+
   /// Product gallery zoom
   {% if settings.enable_product_image_zoom %}
   if(!isMobile()) {
@@ -549,9 +549,9 @@ $(function($){
     $('.product-gallery .main .main-img-link').trigger('initzoom');
   }
   {% endif %}
-  
+
   /// Product gallery lightbox
-  
+
   $(document).on('click', '.product-gallery .main a.main-img-link', function(){
     //Don't do anything if the screen isn't very large. Otherwise, lightbox ahoy...
     if($(window).height() >= 580 && $(window).width() >= 768) {
@@ -571,10 +571,10 @@ $(function($){
     }
     return false;
   });
-  
-  
+
+
   /// Product gallery
-  
+
   $(document).on('click', '.product-gallery .thumbnails .thumbnail', function(e){
     e.preventDefault();
     var $photoCont = $(this).closest('.product-gallery');
@@ -591,9 +591,9 @@ $(function($){
     }
   });
   {% endif %}
-  
+
   /// Quick buy
-  
+
   $(document).on('click', '.product-block .quick-buy', function(){
     var $prod = $(this).closest('.product-block');
     var prevIndex = $prod.index('.product-block') - 1;
@@ -629,10 +629,10 @@ $(function($){
     $('.product-block:eq('+$(this).data('idx')+') .quick-buy').click();
     return false;
   });
-  
-  
+
+
   /// Wide blog images (done for images with class 'uncontain', or images with alt text ending 'fullwidth')
-  
+
   $('.reading-column img[data-fullwidth]').addClass('uncontain');
   if($('.reading-column .uncontain').length) {
     $(window).on('resize load wideimgs', function(){
@@ -647,10 +647,10 @@ $(function($){
       });
     });
   }
-  
-  
+
+
   /// Image tile section
-  
+
   $('.tile-group').on('render', function(){
     //Vars
     var $section = $(this);
@@ -661,13 +661,13 @@ $(function($){
     if($(this).width() < 400) {
       row_size = 1;
     }
-    
+
     //Split into rows
     while ($imgs.length > 0) {
       var $row = $($imgs.splice(0, row_size));
       rows.push($row);
     }
-    
+
     //Only need to recalculate the widths and x-offsets if the layout changes
     var recalcWidths = typeof $section.data('row_size') == 'undefined' || $section.data('row_size') != row_size;
     if(recalcWidths) {
@@ -924,8 +924,8 @@ $('a[rel=lightbox]').colorbox({ minWidth: '200', maxWidth: '96%', maxHeight: '96
     $('{{ settings.blog_image_display }} .article .header-image img').cropImageToRatio({ ratio: {{ settings.blog_crop_style }} });
   });
   {% endif %}
-  
-  
+
+
   /// Page height assessment
   $(window).on('debouncedresize load setminheight', function(){
     // inner wrap contains the border
@@ -978,8 +978,29 @@ $('a[rel=lightbox]').colorbox({ minWidth: '200', maxWidth: '96%', maxHeight: '96
     };
     controlCartUpsell();
 
+    function deferImages() {
+        var imgDefer = document.getElementsByTagName('img');
+        for (var i = 0; i < imgDefer.length; i++) {
+            if (imgDefer[i].getAttribute('data-src')) {
+                imgDefer[i].setAttribute('src', imgDefer[i].getAttribute('data-src'));
+            }
+        }
+    }
 
+    $(window).load( function() {
 
+        deferImages();
+
+        $('#insta .grid').isotope({
+            itemSelector: '.grid-item',
+            percentPosition: true,
+            masonry: {
+                //columnWidth: 100,
+                isFitWidth: true
+            }
+        });
+    });
 
 
 });
+

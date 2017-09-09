@@ -4,7 +4,8 @@
       <div class="fourth column first">
         {% if settings.use_logo and settings.show_footer_logo %}
         <div class="logo-column column mobile-logo">
-          {{ 'footer_logo.png' | asset_url | split:"?" | first | img_tag | link_to: shop.url }}
+          <a href="{{ shop.url }}" title=""><img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ 'footer_logo.png' | asset_url | split:'?' | first }}" alt=""></a>
+          {% comment %}{{ 'footer_logo.png' | asset_url | split:"?" | first | img_tag | link_to: shop.url }}{% endcomment %}
         </div>
         {% endif %} 
         <ul class="plain inline list-divide">

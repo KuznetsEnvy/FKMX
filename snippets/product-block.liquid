@@ -11,7 +11,7 @@
   <div class="image">
     <div class="inner">
 
-      <a class="none-hover" href="{{product.url}}"><img src="{{ product.images.last | product_img_url: 'large' | split:'?' | first }} "/></a>
+      <a class="none-hover" href="{{product.url}}"><img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ product.images.last | product_img_url: 'large' | split:'?' | first }} "/></a>
       
       {% if settings.prod_quick_buy_show %}
       <div class="quick-buy-wrap pos-{{ settings.prod_quick_buy_pos }}"><a class="quick-buy {% if settings.prod_quick_buy_pos == 'middle' %}giant{% else %}big{% endif %}-round-button" href="#">{{ 'products.general.quick_buy_html' | t }}</a></div>
@@ -51,9 +51,9 @@
         {% if product.price_varies %}
         <span class="from">{{ 'products.general.from' | t }}</span>
         {% endif %}
-        <span class="amount">{{ product.price | money_with_currency }}</span>
+        <span class="amount">{{ product.price | money }}</span>
         {% if product.compare_at_price_max > product.price %}
-        <del>{{ product.compare_at_price | money_with_currency }}</del>
+        <br /><del>{{ product.compare_at_price | money }}</del>
         {% endif %}
       </div>
     </div>
@@ -136,7 +136,7 @@
 
         <div id="price" class="product-price {% if false and product.variants.size == 1 and product.compare_at_price_max > product.price %}on-sale{% endif %}">
           {% if false and product.variants.size == 1 and product.compare_at_price_max > product.price %}
-          <del>{{ product.compare_at_price | money }}</del>
+            <br /><del>{{ product.compare_at_price | money }}</del>
           {% endif %}
           {{ product.price | money }}
         </div>
