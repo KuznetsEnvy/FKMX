@@ -8552,3 +8552,48 @@ a.current-cart.toggle-cart-summary .cart-count {
 .debug {
   display: none !important;
 }
+
+.explanation {
+  background-color: black;
+  color: white;
+  font-size: 1.32vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.25em;
+
+  & > * {
+    line-height: normal;
+  }
+
+  img {
+    width: 1em;
+    margin: 0 1em;
+  }
+  em {
+    font-family: "Have Heart One";
+    font-size: 185%;
+    letter-spacing: 0.04em;
+    margin: 0 0.2em;
+  }
+  span {
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.065em;
+
+    & > .red {
+      color: #ff4c4c;
+    }
+  }
+}
+@media (max-width: 745px) {
+  .explanation {
+    font-size: 3.6vw;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    em {
+      font-size: 185%;
+    }
+  }
+}

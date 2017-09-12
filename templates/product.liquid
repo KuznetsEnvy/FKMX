@@ -1,3 +1,7 @@
+<!-- Start product template -->
+<div class="explanation">
+  <img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ 'icon-white-megaphone.svg' | asset_url | split:'?' | first }}" /><em>Pedido por adelantado</em><span> - <span class="red">envíos en 15 días</span> -  Hasta 50% de descuento</span>
+</div>
 {% assign variant = product.selected_or_first_available_variant %}
 {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
 
