@@ -15,17 +15,10 @@
 
 @font-face {
   font-family: "Have Heart One";
-  src: url("{{ 'Have Heart One.otf' }}");
-}
-
-@font-face {
-  font-family: "Have Heart Two";
-  src: url("{{ 'Have Heart Two.otf' }}");
-}
-
-@font-face {
-  font-family: "Have Heart Swash";
-  src: url("{{ 'Have Heart Swash.otf' }}");
+  font-weight: 400;
+  src:
+          url("{{ 'Have Heart One.ttf' | asset_url | split:'?' | first }}") format("truetype"),
+          url("{{ 'Have Heart One.otf' | asset_url | split:'?' | first }}") format("opentype");
 }
 
 @font-face {
@@ -6813,7 +6806,7 @@ width: 40%;
     padding: 20px 0;
   }
   #cartform ul.cart-items {
-    margin: 0;
+    margin: 1.5vw;
   }
 }
 
@@ -7182,6 +7175,7 @@ a.current-cart.toggle-cart-summary {
   }
   > div {
     padding: 0 0.3rem;
+    white-space: nowrap;
   }
 }
 
@@ -7216,7 +7210,7 @@ a.current-cart.toggle-cart-summary .cart-count {
   text-align: center;
   background: url("{{ 'bg-border.png' | asset_url | split:'?' | first }}") no-repeat center;
   h4 {
-    font-family: "Have Heart One";
+    font-family: 'Have Heart One';
     font-size: 5em;
   }
 }

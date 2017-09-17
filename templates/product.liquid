@@ -31,7 +31,7 @@
         <ul class="bxslider">
           {% for image in product.images %}
             <li>
-              <img id="zoom" data-zoom-image="{{ image | product_img_url: 'original' }}" class="main-img" src="{{ image | product_img_url: '1024x1024' }}" alt="{{ image.alt | escape }}"/>
+              <img class="main-img" src="{{ image | product_img_url: '1024x1024' }}" alt="{{ image.alt | escape }}"/>
             </li>
           {% endfor %}
         </ul>

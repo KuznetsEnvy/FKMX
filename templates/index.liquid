@@ -51,7 +51,7 @@
                 </div>
                 {% endcomment %}
 
-                <div class="row grid {% if settings[max_count_setting_id] == settings.homepage_products_per_row %}one-row{% endif %}" {% if settings.coll_align_heights %}data-normheights=".image" data-normheights-inner="img"{% endif %}>
+                <div class="row {% if settings[max_count_setting_id] == settings.homepage_products_per_row %}one-row{% endif %}" {% comment %}{% if settings.coll_align_heights %}data-normheights=".image" data-normheights-inner="img"{% endif %}{% endcomment %}>
 
                     {% for product in collection.products limit: settings[max_count_setting_id] %}
                         {% include 'product-block' %}
@@ -68,7 +68,7 @@
 {{ settings['homepage_collection_4'] }}
 <section class="border-top section products-section bottom">
   <div class="container	">
-    <div class="row grid {% if settings[max_count_setting_id] == settings.homepage_products_per_row %}one-row{% endif %}" {% if settings.coll_align_heights %}data-normheights=".image" data-normheights-inner="img"{% endif %}>
+    <div class="row grid {% if settings[max_count_setting_id] == settings.homepage_products_per_row %}one-row{% endif %}" {% comment %}{% if settings.coll_align_heights %}data-normheights=".image" data-normheights-inner="img"{% endif %}{% endcomment %}>
       {% for product in collection.products limit: settings[max_count_setting_id] %}
         {% include 'product-block' %}
       {% endfor %}
@@ -88,7 +88,7 @@
     {% include 'onboarding-product-row' %}
     {% else %}
 
-    <div class="row grid {% if settings['homepage_collection_4_count'] == settings.homepage_products_per_row %}one-row{% endif %}" {% if settings.coll_align_heights %}data-normheights=".image" data-normheights-inner="img"{% endif %}>
+    <div class="row grid {% if settings['homepage_collection_4_count'] == settings.homepage_products_per_row %}one-row{% endif %}" {% comment %}{% if settings.coll_align_heights %}data-normheights=".image" data-normheights-inner="img"{% endif %}{% endcomment %}>
       {% for product in collection.products limit: settings['homepage_collection_4_count'] %}
         {% include 'product-block' %}
       {% endfor %}

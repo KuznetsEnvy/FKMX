@@ -127,7 +127,27 @@
 
     window.onload = function() {
         document.getElementById("loading-overlay").style.display = "none";
+      {% if template contains 'product' %}
+        var initBxSlider = function() {
+            $(function () {
+                var autostart = $('.bxslider li').length > 1 ? true : false;
+
+                $('.bxslider').bxSlider({
+                    responsive: true,
+                    touchEnabled: true,
+                    auto: true,
+                    adaptiveHeight: true,
+                    autoStart: autostart,
+                    pager: autostart,
+                    controls: false,
+                    speed: 1000
+                });
+            });
+        }()
+      {% endif %}
     };
+
+
 
 </script>
 
@@ -336,29 +356,6 @@
 
 {% include 'mobile-navigation' %}
 {% comment %} {% include 'popup' %} {% endcomment %}
-
-{% if template contains 'product' %}
-  {% comment %}{% include 'fixed-product' %}{% endcomment %}
-  <script>
-      document.getElementById('bxslider').addEventListener('load', function () {
-          $(function () {
-              var autostart = $('.bxslider li').length > 1 ? true : false;
-
-              $('.bxslider').bxSlider({
-                  responsive: true,
-                  touchEnabled: true,
-                  auto: true,
-                  adaptiveHeight: true,
-                  autoStart: autostart,
-                  pager: autostart,
-                  controls: false,
-                  speed: 1000
-              });
-          });
-      });
-
-  </script>
-{% endif %}
 
 <script src="{{ 'libs.js' | asset_url | split:"?" | first }}" defer></script>
 <script src="{{ 'scripts.js' | asset_url }}" defer></script>

@@ -39,7 +39,7 @@
       "continue_shopping": "Seguir comprando",
       "title": "Tu pedido",
       "cart": "Ver carrito",
-      "checkout": "Pagos",
+      "checkout": "Ir a opciones de pago",
       "subtotal": "Subtotal:"
     },
     "customer": {
@@ -108,7 +108,7 @@
       "continue": "Seguir comprando",
       "keep": "Sigue comprando",
       "click_to_continue_html": "<a href=\"\/\">Haz clic aquí<\/a> para seguir comprando.",
-      "checkout": "Pagos",
+      "checkout": "Ir a opciones de pago",
       "to_checkout": "PROCEDER CON EL PAGO"
     },
     "label": {
