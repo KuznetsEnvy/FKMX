@@ -6,10 +6,6 @@
 <!--[if (gt IE 10)|!(IE)]><!-->
 <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  {% comment %}
-  {{ 'geolizr-lib.js' | asset_url | script_tag }}
-  {{ 'geolizr-lib.css' | asset_url | stylesheet_tag }}
-  {% endcomment %}
   <!-- Canopy v1.0.10 -->
   <meta charset="utf-8"/>
 
@@ -121,14 +117,15 @@
 </head>
 
 <body class="template-{{ template | split: '.' | first }} {{ page_title | handle }}">
-<div id="loading-overlay" style="z-index: 999; position: fixed; top:0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items:center; background-color: white; display: none;"><img src="{{ 'Preloader_21.gif' | asset_url | split:'?' | first }}" alt="loading image" /></div>
+<div id="loading-overlay" style="z-index: 999; position: fixed; top:0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items:center; background-color: white; display: none;">
+  <img src="{{ 'Preloader_21.gif' | asset_url | split:'?' | first }}" alt="loading image"/></div>
 <script>
     document.getElementById("loading-overlay").style.display = "flex";
 
-    window.onload = function() {
+    window.onload = function () {
         document.getElementById("loading-overlay").style.display = "none";
       {% if template contains 'product' %}
-        var initBxSlider = function() {
+        var initBxSlider = function () {
             $(function () {
                 var autostart = $('.bxslider li').length > 1 ? true : false;
 
@@ -148,116 +145,27 @@
     };
 
 
-
 </script>
 
-<div id="header" class="cart" style="width:100%;">
+<div id="header" class="cart">
+  <div class="secure-payment"><img src="{{ 'icon-mercado-pago.png' | asset_url | split:'?' | first }}" alt="MercadoPago secure payment" /><span>{{ 'layout.header.secure_payment_html' | t }}</span><img src="{{ 'icon-paypal.png' | asset_url | split:'?' | first }}" alt="PayPal secure payment" /></div>
   {% if settings.shipping-banner-enable %}
     {% unless template contains 'product' %}
-    <div class="shipping-banner-top visible-mobile">
+    <div class="shipping-banner-top visible-desktop">
       {{ 'cart.shipping.shipping-banner_html' | t }}
       <nobr>{{ settings.free_shipping_from | money }}</nobr>
     </div>
     {% endunless %}
   {% endif %}
-  <div class="container">
-    <div class="page-header">
-      <div id="toolbar" class="toolbar cf">
-        <div class="logo-nav">
-          <div class="logo">
-            {% if settings.use_logo %}{{ 'cart-header-logo-black_small.png' | asset_url | split:"?" | first | img_tag | link_to: shop.url }}{% else %}{{ shop.name | link_to: shop.url }}{% endif %}
-          </div>
 
-          {% unless settings.header_layout == 'nav' %}
-          <div class="cf">{{ logo_html }}</div>
-          {% endunless %}
-
-          {% unless settings.header_layout == 'mobile' %}
-          {% include 'main-navigation' %}
-          {% endunless %}
-        </div>
-
-
-        {% unless settings.header_layout == 'mobile' %}
-        <span class="toolbar-links">
-                    {% if shop.customer_accounts_enabled %}
-                      {% if customer %}
-                        <a href="/account">{{ 'layout.customer.your_account' | t }}</a>
-                        <span class="divider">/</span> {{ 'layout.customer.logout' | t | customer_logout_link }}
-                        {% else %}
-                        {{ 'layout.customer.login' | t | customer_login_link }}
-                        {% if shop.customer_accounts_optional %}
-                          <span class="divider">/</span> {{ 'layout.customer.create_account' | t | customer_register_link }}
-                        {% endif %}
-                      {% endif %}
-                        {% if settings.show_header_search %}
-                      <span class="divider">/</span>
-                    {% endif %}
-                    {% endif %}
-          {% if settings.show_header_search %}
-            <form class="search-form" action="/search" method="get">
-                            {% if settings.search_prods_only %}
-                              <input type="hidden" name="type" value="product">{% endif %}
-              <button class="icon-mag"></button>
-                            <input type="text" name="q" placeholder="{{ 'layout.header.search' | t }}"/>
-                        </form>
-          {% endif %}
-                  </span>
-        {% endunless %}
-        {% comment %}
-        <div style="display:none;">
-                    <span class="toolbar-cart">
-                    <span class="{% unless settings.show_cart_as_button %}no-{% endunless %}btn">
-                        <a class="current-cart {% if template != 'cart' %}toggle-cart-summary{% endif %}" href="/cart">
-                        {{ cart.item_count }} / {{ cart.total_price | money }} <i class="icon-cart"></i>
-                        </a>
-                    </span>
-                    </span>
-        </div>
-        {% endcomment %}
-        <div class="selector-wrapper" style="display: none;">
-          {% include 'ly-languages-switcher' %}
-        </div>
-        <div class="main-menu">
-          <nav class="menu">
-            {% comment %}
-            <ul class="site-nav" id="accessibleNav">
-              {% for link in linklists.main-menu.links %}
-                {% assign child_list_handle = link.title | handleize %}
-                {% if linklists[child_list_handle].links != blank %}
-
-                  <li class="site-nav--has-dropdown{% if link.active %} site-nav--active{% endif %}" aria-haspopup="true">
-                    <a href="{{ link.url }}">{{ link.title }}</a>
-                    <ul class="site-nav--dropdown">
-                      {% for childlink in linklists[child_list_handle].links %}
-                        <li {% if childlink.active %}class="site-nav--active"{% endif %}>
-                          <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a></li>
-                      {% endfor %}
-                    </ul>
-                  </li>
-
-                {% else %}
-
-                  <li {% if link.active %}class="site-nav--active"{% endif %}>
-                    <a href="{{ link.url }}">{{ link.title }}</a>
-                  </li>
-
-                {% endif %}
-              {% endfor %}
-            </ul>
-            {% endcomment %}
-            <a class="current-cart {% if template != 'cart' %}toggle-cart-summary{% endif %}">
-              <i class="icon-cart"></i>
-              <div>{{ 'cart.general.title_short' | t }} (<span class="cart-count">{{ cart.item_count }}</span>)</div>
-            </a>
-          </nav>
-        </div>
-        {% unless settings.header_layout == 'mobile' %}
-        <span class="toolbar-social">{% include 'social-links' %}</span>
-        {% endunless %}
-      </div>
+  <div class="page-header">
+    <div><!-- This div is needed for flexbox alignment --></div>
+    <a class="text-logo" href="{{ shop.url }}"><strong>Floatie</strong> Kings</a>
+    <div class="cart-wrap">
+      <a class="current-cart {% if template != 'cart' %}toggle-cart-summary{% endif %}">{{ cart.item_count }}</a>
     </div>
   </div>
+
   {% include 'cart-summary' %}
 </div>
 
@@ -267,87 +175,101 @@
       <div id="content" data-template="{{ template }}">
 
         {% if template contains 'index' or template contains 'product' %}
-        {% if settings.home_show_slideshow %}
 
-          <div id="bicolorBanner" class="banner-index" style="{% if template contains 'product' %}display:none;{% endif %}">
-            <picture>
-              <source media="(min-width: 1920px)" srcset="{{ 'MX-Desktop-1920.jpg' | asset_url | split:"?" | first }}">
-              <source media="(min-width: 1400px)" srcset="{{ 'MX-Desktop-1400.jpg' | asset_url | split:"?" | first }}">
-              <source media="(min-width: 1024px)" srcset="{{ 'MX-Desktop-1024.jpg' | asset_url | split:"?" | first }}">
-              <source media="(min-width: 751px)" srcset="{{ 'MX-Desktop-1024.jpg' | asset_url | split:"?" | first }}">
-              <source media="(min-width: 300px)" srcset="{{ 'MX-Mobile.jpg' | asset_url | split:"?" | first }}">
-              <img src="{{ 'MX-Desktop-1920.jpg' | asset_url | split:"?" | first }}" alt="Homepage banner">
-            </picture>
-          </div>
+          {% if settings.home_show_slideshow %}
+            <div id="bicolorBanner" class="banner-index" style="{% if template contains 'product' %}display:none;{% endif %}">
 
-          <!-- countdown timer -->
-          {% comment %}
-          [powr-countdown-timer id=9fd31ed4_1472213740]
-          {% endcomment %}
+              <picture>
+                <source media="(min-width: 1920px)" srcset="{{ 'MX-Desktop-1920.jpg' | asset_url | split:"?" | first }}">
+                <source media="(min-width: 1400px)" srcset="{{ 'MX-Desktop-1400.jpg' | asset_url | split:"?" | first }}">
+                <source media="(min-width: 1024px)" srcset="{{ 'MX-Desktop-1024.jpg' | asset_url | split:"?" | first }}">
+                <source media="(min-width: 751px)" srcset="{{ 'MX-Desktop-1024.jpg' | asset_url | split:"?" | first }}">
+                <source media="(min-width: 300px)" srcset="{{ 'MX-Mobile.jpg' | asset_url | split:"?" | first }}">
+                <img src="{{ 'MX-Desktop-1920.jpg' | asset_url | split:"?" | first }}" alt="Homepage banner">
+              </picture>
 
-          {% if settings.shipping-banner-enable %}
-            {% unless template contains 'product' %}
-            <div class="shipping-banner">
-              <div class="nn-secondary-middle">{{ 'cart.shipping.shipping-banner_html' | t }}
-                <nobr>{{ settings.free_shipping_from | money }}</nobr>
+              {% comment %}
+              <picture>
+                <source media="(min-width: 1920px)" srcset="{{ 'header_banner_textless_1920.png' | asset_url | split:"?" | first }}">
+                <source media="(min-width: 1440px)" srcset="{{ 'header_banner_textless_1440.png' | asset_url | split:"?" | first }}">
+                <source media="(min-width: 1024px)" srcset="{{ 'header_banner_textless_1024.png' | asset_url | split:"?" | first }}">
+                <source media="(min-width: 768px)" srcset="{{ 'header_banner_textless_768.png' | asset_url | split:"?" | first }}">
+                <source media="(min-width: 414px)" srcset="{{ 'header_banner_textless_750.png' | asset_url | split:"?" | first }}">
+                <source media="(min-width: 200px)" srcset="{{ 'header_banner_textless_414.png' | asset_url | split:"?" | first }}">
+                <img src="{{ 'header_banner_textless_1920.png' | asset_url | split:"?" | first }}" alt="Homepage banner">
+              </picture>
+
+
+              <div class="svg-text">
+                <img {{ deferimg }}src="{{ 'TEXT-SummerSALE_transparent.svg' | asset_url | split:"?" | first }}" alt="Make summer last">
+                <span class="visible-desktop">Shop sale</span>
               </div>
+              {% endcomment %}
             </div>
-            {% endunless %}
+
+            {% comment %}{% if settings.shipping-banner-enable %}
+              {% unless template contains 'product' %}
+              <div class="shipping-banner">
+                <div class="nn-secondary-middle">{{ 'cart.shipping.shipping-banner_html' | t }}
+                  <nobr>{{ settings.free_shipping_from | money }}</nobr>
+                </div>
+              </div>
+              {% endunless %}
+            {% endif %}{% endcomment %}
           {% endif %}
-        {% endif %}
 
         {% else %}
-        {% if template contains 'cart' or template contains 'page.support' or template contains 'page.win-cash' or template contains 'page.thank-you' or template contains 'index' %}
-        <div class="cart-header">
-          {% if template contains 'cart' %}
-            {% if settings.cart_banner %}
-              {% comment %}
-              <img src="{{ 'cart-banner.jpg' | asset_url | split:"?" | first }}" alt="cart-banner"/> {% endcomment %}
-              <div id="bicolorBanner" class="banner-index" style="{% if template contains 'product' %}display:none;{% endif %}">
-                <picture>
-                  <source media="(min-width: 64em)" srcset="{{ 'cart-banner.jpg' | asset_url | split:"?" | first }}">
-                  <source media="(min-width: 300px)" srcset="{{ 'Cart-Header-Mobile.jpg' | asset_url | split:"?" | first }}">
-                  <img src="{{ 'cart-banner.jpg' | asset_url | split:"?" | first }}" alt="Sunglasses Original Bicolor">
-                </picture>
-              </div>
-            {% endif %}
-            {% elsif template contains 'page.support' %}
-            {% if settings.cart_banner %}
-              <img src="{{ 'support-banner.jpg' | asset_url | split:"?" | first }}" alt="support-banner"/>
-            {% endif %}
-            {% elsif template contains 'page.win-cash' or template contains 'page.thank-you' %}
-            {% if settings.win_banner %}
-              <picture>
-                <source media="(min-width: 768px)" srcset="{{ 'win-cash.jpg' | asset_url | split:"?" | first }}">
-                <source media="(min-width: 200px)" srcset="{{ 'Mobile-Win-Header.jpg' | asset_url | split:"?" | first }}">
-                <img src="{{ 'win-cash.jpg' | asset_url | split:"?" | first }}" alt="{{ settings.win-cash-alt }}"/>
-              </picture>
-            {% endif %}
-          {% endif %}
+
+          {% if template contains 'cart' or template contains 'page.support' or template contains 'page.win-cash' or template contains 'page.thank-you' or template contains 'index' %}
+            <div class="cart-header">
+              {% if template contains 'cart' %}
+                {% if settings.cart_banner %}
+                  <div id="bicolorBanner" class="banner-index" style="{% if template contains 'product' %}display:none;{% endif %}">
+                    <picture>
+                      <source media="(min-width: 64em)" srcset="{{ 'cart-banner.jpg' | asset_url | split:"?" | first }}">
+                      <source media="(min-width: 300px)" srcset="{{ 'Cart-Header-Mobile.jpg' | asset_url | split:"?" | first }}">
+                      <img src="{{ 'cart-banner.jpg' | asset_url | split:"?" | first }}" alt="Sunglasses Original Bicolor">
+                    </picture>
+                  </div>
+                {% endif %}
+              {% elsif template contains 'page.support' %}
+                {% if settings.cart_banner %}
+                  <img src="{{ 'support-banner.jpg' | asset_url | split:"?" | first }}" alt="support-banner"/>
+                {% endif %}
+              {% elsif template contains 'page.win-cash' or template contains 'page.thank-you' %}
+                {% if settings.win_banner %}
+                  <picture>
+                    <source media="(min-width: 768px)" srcset="{{ 'win-cash.jpg' | asset_url | split:"?" | first }}">
+                    <source media="(min-width: 200px)" srcset="{{ 'Mobile-Win-Header.jpg' | asset_url | split:"?" | first }}">
+                    <img src="{{ 'win-cash.jpg' | asset_url | split:"?" | first }}" alt="{{ settings.win-cash-alt }}"/>
+                  </picture>
+                {% endif %}
+              {% endif %}
+            </div><!-- /.cart-header"-->
           {% else %}
             <div class="header">
+              {% endif %}
+
+              {% if template contains 'page.win-cash' %}
+                <div class="shipping-banner">
+                  <div class="nn-secondary-middle">{{ 'pages.win_cash.submit_details_html' | t }}</div>
+                </div>
+              {% else %}
+                {% unless template contains 'page.thank-you' %}
+                {% if settings.shipping-banner-enable %}
+                  <div class="shipping-banner">
+                    <div class="nn-secondary-middle">{{ 'cart.shipping.shipping-banner_html' | t }}
+                      <nobr>{{ settings.free_shipping_from | money }}</nobr>
+                    </div>
+                  </div>
+                {% endif %}
+                {% endunless %}
+              {% endif %}
+              <div id="header" style="display:none;"></div>
+            </div> <!--  /.header -->
           {% endif %}
 
-          {% if template contains 'page.win-cash' %}
-            <div class="shipping-banner">
-              <div class="nn-secondary-middle">{{ 'pages.win_cash.submit_details_html' | t }}</div>
-            </div>
-          {% else %}
-            {% unless template contains 'page.thank-you' %}
-              {% if settings.shipping-banner-enable %}
-                <div class="shipping-banner">
-                  <div class="nn-secondary-middle">{{ 'cart.shipping.shipping-banner_html' | t }}
-                    <nobr>{{ settings.free_shipping_from | money }}</nobr>
-                  </div>
-                </div>
-              {% endif %}
-            {% endunless %}
-          {% endif %}
-          <div id="header" style="display:none;"></div>
-        </div> <!--   end header class  -->
-          {% endif %}
           {{ content_for_layout }}
-        </div><!-- /.cart-header"-->
       </div><!-- /#content -->
     </div><!-- /#page-wrap-content -->
     {% include 'footer' %}
@@ -357,6 +279,7 @@
 {% include 'mobile-navigation' %}
 {% comment %} {% include 'popup' %} {% endcomment %}
 
+{% if template contains 'index' %}<script id="instafeed-script" src="https://cdnjs.cloudflare.com/ajax/libs/instafeed.js/1.4.1/instafeed.min.js" defer></script>{% endif %}
 <script src="{{ 'libs.js' | asset_url | split:"?" | first }}" defer></script>
 <script src="{{ 'scripts.js' | asset_url }}" defer></script>
 {% comment %}

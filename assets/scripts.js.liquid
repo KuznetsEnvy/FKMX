@@ -96,6 +96,7 @@ $(function($){
   });*/
     $(document).on('click', '.toggle-cart-summary', function () {
         //prep for reveal
+        console.log(".toggle-cart-summary clicked!");
         $('#overlay').toggleClass('is-active');
         $('#cart-summary').toggle('slide', {direction: 'right'}, 200);
         /*if (isMobile()) {
@@ -108,6 +109,7 @@ $(function($){
     });
     $(document).on('click', '#overlay.is-active', function () {
         //prep for reveal
+        console.log("#overlay.is-active clicked");
         $('#overlay').toggleClass('is-active');
         $('#cart-summary').toggle('slide', {direction: 'right'}, 200);
         /*if (isMobile()) {
@@ -942,11 +944,11 @@ $('a[rel=lightbox]').colorbox({ minWidth: '200', maxWidth: '96%', maxHeight: '96
   }
 
     $(window).on('resize', function(){
-        fixedHeaderCompensateOffset();
+        // fixedHeaderCompensateOffset();
     });
 
     $(window).on('load', function(){
-        fixedHeaderCompensateOffset();
+        // fixedHeaderCompensateOffset();
 
         // "You might also be interested in" block number of elements limitation for mobile
         if ($('#related-products').width() <= 769 ){
@@ -991,14 +993,14 @@ $('a[rel=lightbox]').colorbox({ minWidth: '200', maxWidth: '96%', maxHeight: '96
 
         deferImages();
 
-        $('#insta .grid').isotope({
+        /*$('#insta .grid').isotope({
             itemSelector: '.grid-item',
             percentPosition: true,
             masonry: {
                 //columnWidth: 100,
                 isFitWidth: true
             }
-        });
+        });*/
     });
 
 

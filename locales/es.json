@@ -33,7 +33,8 @@
   "layout": {
     "header": {
       "search": "Search",
-      "menu": "Menu"
+      "menu": "Menu",
+      "secure_payment_html": "<nobr>Pago seguro<\/nobr> <nobr>y encriptado<\/nobr>"
     },
     "cart_summary": {
       "continue_shopping": "Seguir comprando",
@@ -60,6 +61,16 @@
     },
     "mobile_navigation": {
       "back": "Back to previous"
+    },
+    "banners": {
+      "memories_last_forever": "Crea recuerdos para toda la vida",
+      "memories_last_forever_html": "<span>Crea recuerdos para<\/span><br \/><em>toda la vida<\/em>",
+      "bring_best_friend_html": "<span>Lleva a tu<\/span><br \/><em>mejor amigo<\/em>"
+    },
+    "misc": {
+      "definite_article": "El",
+      "summer_story_html": "<nobr>Cada verano tiene<\/nobr> <nobr>su propia história ;)<\/nobr>",
+      "follow_us_html": "<em>Síguenos<\/em> en"
     }
   },
   "blogs": {
@@ -127,7 +138,6 @@
       "free_shipping_added": "ENVÍO GRATUITO añadido.",
       "almost_there": "¡Estas a un paso de obtener ENVíO GRATUITO!"
     }
-
   },
   "collections": {
     "general": {
@@ -199,13 +209,13 @@
       "enter": "Ingresa",
       "select": "Seleccionar",
       "selected": "Seleccionado",
-      "see_more": "Ver más"
+      "see_more": "Ver más",
+      "shop_now": "Compra ahora"
     }
   },
   "support_page": {
     "messages": {
     }
-
   },
   "products": {
     "general": {
@@ -217,6 +227,7 @@
       "back_to_html": "Back to:",
       "previous": "Previous",
       "next": "Next",
+      "product_unavailable": "Producto no disponible",
       "product_unavailable_html": "Notifícame cuando este disponible",
       "quantity": "Cantidad",
       "add_to_cart_html": "Agregar al Carrito",

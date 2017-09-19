@@ -33,7 +33,8 @@
   "layout": {
     "header": {
       "search": "Search",
-      "menu": "Menu"
+      "menu": "Menu",
+      "secure_payment_html": "<nobr>Secure and<\/nobr> <nobr>encrypted payment<\/nobr>"
     },
     "cart_summary": {
       "continue_shopping": "Continue shopping",
@@ -60,6 +61,16 @@
     },
     "mobile_navigation": {
       "back": "Back to previous"
+    },
+    "banners": {
+      "memories_last_forever": "Make memories that last forever",
+      "memories_last_forever_html": "<span>Make memories that<\/span><br \/><em>last forever<\/em>",
+      "bring_best_friend_html": "<span>Bring your<\/span><br \/><em>best friend<\/em>"
+    },
+    "misc": {
+      "definite_article": "The",
+      "summer_story_html": "<nobr>Every summer has<\/nobr> <nobr>it’s own story ;)<\/nobr>",
+      "follow_us_html": "<em>Follow us<\/em> at"
     }
   },
   "blogs": {
@@ -198,7 +209,8 @@
       "enter": "Enter",
       "select": "Select",
       "selected": "Selected",
-      "see_more": "See more"
+      "see_more": "See more",
+      "shop_now": "Shop now"
     }
   },
   "products": {
@@ -211,6 +223,7 @@
       "back_to_html": "Back to:",
       "previous": "Previous",
       "next": "Next",
+      "product_unavailable": "Product unavailable",
       "product_unavailable_html": "Notify Me When In Stock",
       "quantity": "Quantity",
       "add_to_cart_html": "Add to Cart",
