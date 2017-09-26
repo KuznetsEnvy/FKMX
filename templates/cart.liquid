@@ -60,7 +60,7 @@
                 <input class="right" type="button" onclick="incrementValue(this)" value="+"/>
               </div>
 
-              <div class="price"><h5>{{ item.line_price | money }}</h5></div>
+              <div class="price"><del>{{ item.product.compare_at_price_max | money }}</del> <h5>{{ item.line_price | money }}</h5></div>
             </li>
           {% endfor %}
         </ul>

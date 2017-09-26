@@ -180,12 +180,12 @@
             <div id="bicolorBanner" class="banner-index" style="{% if template contains 'product' %}display:none;{% endif %}">
 
               <picture>
-                <source media="(min-width: 1920px)" srcset="{{ 'MX-Desktop-1920.jpg' | asset_url | split:"?" | first }}">
-                <source media="(min-width: 1400px)" srcset="{{ 'MX-Desktop-1400.jpg' | asset_url | split:"?" | first }}">
-                <source media="(min-width: 1024px)" srcset="{{ 'MX-Desktop-1024.jpg' | asset_url | split:"?" | first }}">
-                <source media="(min-width: 751px)" srcset="{{ 'MX-Desktop-1024.jpg' | asset_url | split:"?" | first }}">
-                <source media="(min-width: 300px)" srcset="{{ 'MX-Mobile.jpg' | asset_url | split:"?" | first }}">
-                <img src="{{ 'MX-Desktop-1920.jpg' | asset_url | split:"?" | first }}" alt="Homepage banner">
+                <source media="(min-width: 1920px)" srcset="{{ 'MX-Desktop-1920-@2x.jpg' | asset_url | split:"?" | first }}">
+                <source media="(min-width: 1400px)" srcset="{{ 'MX-Desktop-1400-@2x.jpg' | asset_url | split:"?" | first }}">
+                <source media="(min-width: 1024px)" srcset="{{ 'MX-Desktop-1024-@2x.jpg' | asset_url | split:"?" | first }}">
+                <source media="(min-width: 751px)" srcset="{{ 'MX-Desktop-1024-@2x.jpg' | asset_url | split:"?" | first }}">
+                <source media="(min-width: 300px)" srcset="{{ 'MX-Mobile-@2x.jpg' | asset_url | split:"?" | first }}">
+                <img src="{{ 'MX-Desktop-1920-@2x.jpg' | asset_url | split:"?" | first }}" alt="Homepage banner">
               </picture>
 
               {% comment %}
@@ -290,6 +290,7 @@
 <input type="hidden" name="_pc_params" value="{{ shop.permanent_domain }}:{{ customer.id }}"/>
 {% if template contains 'product' %}
 
+  {% comment %}
   <script type="text/javascript">
       document.getElementById('jquery_elevatezoom').addEventListener('load', function () {
           $(document).ready(function () {
@@ -307,6 +308,7 @@
           });
       });
   </script>
+  {% endcomment %}
 
 {% endif %}
 {% if template contains 'product' or template contains 'cart' %}

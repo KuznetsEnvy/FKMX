@@ -47,7 +47,7 @@
                 {% unless item.variant.title contains 'Default' %}
                   <span class="variant">{{ item.variant.title }}</span>
                 {% endunless %}
-                <span class="price ftc">{{ item.price | money }}</span>
+                <span class="price ftc"><del>{{ item.product.compare_at_price_max | money }}</del> {{ item.price | money }}</span>
                 <a data-id="{{ item.variant_id }}" class="remove feature-col">{{ 'cart.general.remove' | t }}</a>
               </span>
               <span class="qty ftc">

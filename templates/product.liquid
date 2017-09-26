@@ -78,7 +78,9 @@
                 <input type="hidden" name="quantity" value="1"/>
               {% endif %}
 
+
               <div id="price" class="product-price {% if product.variants.size == 1 and product.compare_at_price_max > product.price %}on-sale{% endif %}">
+                <del>{{ product.compare_at_price_max | money }}</del>
                 {{ product.price | money }}
               </div>
             {% endif %}
@@ -255,8 +257,8 @@
                 <input type="hidden" name="quantity" value="1"/>
               {% endif %}
 
-
               <div id="price" class="product-price {% if product.variants.size == 1 and product.compare_at_price_max > product.price %}on-sale{% endif %}">
+                <del>{{ product.compare_at_price_max | money }}</del>
                 {{ product.price | money }}
               </div>
             {% endif %}

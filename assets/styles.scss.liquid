@@ -4710,9 +4710,9 @@ section.products-section-single.bottom .product-block .ftr {
 }
 
 .product-title-row .product-price del {
-  font-size: 15pt;
-  font-family: OpenSans;
-  vertical-align: top
+  color: #aaaaaa;
+  font-size: 90%;
+  font-weight: normal;
 }
 
 .template-product .product-gallery .product-title {
@@ -4740,10 +4740,14 @@ section.products-section-single.bottom .product-block .ftr {
 }
 
 .template-product .products-section .ftr .price .amount {
-  color: black;
-  font-weight: bold;
+  color: red;
   font-family: "Brandon Grotesque";
-  font-size: 19px
+  font-size: 19px;
+  font-weight: bold;
+
+  del {
+    color: #aaaaaa;
+  }
 }
 
 /*#page-footer ul.list-divide li a {
@@ -5553,10 +5557,15 @@ a#upsellclosebtn {
   align-items: center;
 }
 
-.cart-items .quantity input, .cart-items .price h5 {
-  text-transform: uppercase;
-  color: black;
-  font-family: "Brandon Grotesque";
+.cart-items .quantity input, .cart-items .price {
+  del {
+    color: #aaaaaa;
+  }
+  h5 {
+    text-transform: uppercase;
+    color: red;
+    font-family: "Brandon Grotesque";
+  }
 }
 
 #cartform .border-bottom input[name="checkout"] {
@@ -6195,19 +6204,15 @@ a#upsellclosebtn {
 }
 
 .parent .product-title-row #price {
-  width: 14%;
-  float: none;
-  text-align: right;
   display: inline-block;
-  vertical-align: middle;
-  color: #000;
+  float: none;
+  width: 14%;
+  color: red;
+  font-family: "Brandon Grotesque";
   font-size: 20px;
   font-weight: bold;
-  font-family: "Brandon Grotesque"
-}
-
-.template-product .product-title-row #price del {
-  display: none
+  text-align: right;
+  vertical-align: middle;
 }
 
 .template-product .product-title-row .compare-price {
@@ -6995,8 +7000,12 @@ a#upsellclosebtn {
 }
 
 #cart-summary .price.ftc {
+  color: red;
   font-size: 14px;
   font-weight: bold;
+  del {
+    color: #aaaaaa;
+  }
 }
 
 #cart-summary .cart-summary-item {
@@ -7346,6 +7355,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
     height: 130px !important;
   }
 }
+
 .toggle-cart-summary {
   cursor: pointer;
 }
@@ -8019,14 +8029,14 @@ button.buy-now.black:hover {
     width: 24%;
   }
   .parent .quantity .select-on-focus {
-    width: calc(55px*0.8);
-    height: calc(35px*0.8);
+    width: calc(55px * 0.8);
+    height: calc(35px * 0.8);
     font-size: 18px;
   }
   .parent .quantity input.left, .parent .quantity input.right {
-    width: calc(30px*0.8);
+    width: calc(30px * 0.8);
     font-size: 18px;
-    height: calc(35px*0.8);
+    height: calc(35px * 0.8);
     vertical-align: top;
   }
   ul li.heading span.description, .cart-items .item .description {
@@ -8698,7 +8708,7 @@ button.buy-now.black:hover {
     @media (max-width: 767px) {
       padding: 3.2vw;
       margin: 8.27vw 4.4vw;
-      max-width: 52.8vw;
+      max-width: 64.8vw;
       font-weight: 500;
     }
 
@@ -8725,7 +8735,6 @@ button.buy-now.black:hover {
       margin: 0.5em 0;
     }
   }
-
 
   .shipping-banner {
     background: url('{{ "bg-border.png" | asset_url | split:"?" | first }}') center center no-repeat;
@@ -8775,6 +8784,7 @@ button.buy-now.black:hover {
     background: rgba(186, 76, 22, 0.3);
   }
 }
+
 .products-section {
   .grid {
     display: flex;
@@ -8807,7 +8817,6 @@ button.buy-now.black:hover {
         background: url('{{ "sale.png" | asset_url | split:"?" | first }}') center center no-repeat;
         background-size: contain;*/
       }
-
 
       .info-wrap {
         font-size: 120%;
@@ -8870,17 +8879,18 @@ button.buy-now.black:hover {
     height: 6.4vw;
 
     @media #{$desktop} {
-        height: 1.7vw;
+      height: 1.7vw;
     }
   }
 
 }
 
 .show-desc.related-product-list .item .desc {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
+
 @media #{$mobile} {
   //region Instagram_mobile
   #insta {
@@ -8919,6 +8929,7 @@ button.buy-now.black:hover {
   }
   //endregion
 }
+
 @media #{$desktop} {
   //region Instagram_desktop
   #insta {
@@ -8930,8 +8941,12 @@ button.buy-now.black:hover {
       letter-spacing: 0.1em;
       margin-bottom: 1em;
 
-      em {font-style: inherit;}
-      strong {font-weight: inherit;}
+      em {
+        font-style: inherit;
+      }
+      strong {
+        font-weight: inherit;
+      }
     }
 
     .grid {
@@ -8952,7 +8967,7 @@ button.buy-now.black:hover {
         }
 
         img.landscape {
-          width: unset;
+          width: auto;
           height: 100%;
         }
 
@@ -8967,6 +8982,7 @@ button.buy-now.black:hover {
   }
   //endregion
 }
+
 .page-footer {
   padding: 4.9vw 0 2.66vw;
   background: #fff;
@@ -9078,7 +9094,7 @@ button.buy-now.black:hover {
 
       .row {
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         justify-content: space-around;
       }
       .product-block {
@@ -9131,7 +9147,7 @@ button.buy-now.black:hover {
             left: 20%;
             text-align: right;
           }
-          &.swan-float {
+          &.white-swan {
             left: 45%;
             text-align: left;
           }

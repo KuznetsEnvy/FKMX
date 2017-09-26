@@ -67,7 +67,7 @@
                       {% endif %}
                     </a>
                     <div class="price ftc ">
-                      <span class="amount">{{ relprod.price | money }}</span>
+                      <span class="amount"><del>{{ relprod.compare_at_price_max | money }}</del><br /> {{ relprod.price | money }}</span>
                     </div>
                   </div>
                 </div>

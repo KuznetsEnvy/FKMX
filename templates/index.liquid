@@ -23,7 +23,7 @@
   <a name="bestsellers"></a>
   <div class="container">
     <div class="row grid">
-      {% for product in collections['mobile-top'].products limit: settings[max_count_setting_id] limit: 4 %}
+      {% for product in collections['mobile-top'].products limit: settings[max_count_setting_id] limit: 6 %}
         {% include 'product-block' %}
       {% endfor %}
     </div>
