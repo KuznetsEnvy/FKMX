@@ -162,7 +162,7 @@
     <div><!-- This div is needed for flexbox alignment --></div>
     <a class="text-logo" href="{{ shop.url }}"><strong>Floatie</strong> Kings</a>
     <div class="cart-wrap">
-      <a class="current-cart {% if template != 'cart' %}toggle-cart-summary{% endif %}">{{ cart.item_count }}</a>
+      <a class="current-cart cart-count {% if template != 'cart' %}toggle-cart-summary{% endif %}">{{ cart.item_count }}</a>
     </div>
   </div>
 
@@ -179,6 +179,25 @@
           {% if settings.home_show_slideshow %}
             <div id="bicolorBanner" class="banner-index" style="{% if template contains 'product' %}display:none;{% endif %}">
 
+
+              <picture>
+                <source media="(min-width: 1920px)" srcset="{{ 'BR-launch-desktop-bg-2800.png' | asset_url | split:"?" | first }}">
+                <source media="(min-width: 1440px)" srcset="{{ 'BR-launch-desktop-bg-1920.png' | asset_url | split:"?" | first }}">
+                <source media="(min-width: 1024px)" srcset="{{ 'BR-launch-desktop-bg-1440.png' | asset_url | split:"?" | first }}">
+                <source media="(min-width: 768px)" srcset="{{ 'BR-launch-desktop-bg-1024.png' | asset_url | split:"?" | first }}">
+                <source media="(min-width: 414px)" srcset="{{ 'BR-launch-mobile-bg-750.png' | asset_url | split:"?" | first }}">
+                <source media="(min-width: 200px)" srcset="{{ 'BR-launch-mobile-bg-375.png' | asset_url | split:"?" | first }}">
+                <img src="{{ 'BR-launch-desktop-bg-1440.png' | asset_url | split:"?" | first }}" alt="Homepage banner">
+              </picture>
+
+
+              <div class="br-launch-banner-text">
+                <mark>Estamos en México</mark>
+                <span>Envíos Ahora</span>
+                <span>Hasta <em>40%</em> de Descuento</span>
+              </div>
+
+              {% comment %}
               <picture>
                 <source media="(min-width: 1920px)" srcset="{{ 'MX-Desktop-1920-@2x.jpg' | asset_url | split:"?" | first }}">
                 <source media="(min-width: 1400px)" srcset="{{ 'MX-Desktop-1400-@2x.jpg' | asset_url | split:"?" | first }}">
@@ -187,6 +206,7 @@
                 <source media="(min-width: 300px)" srcset="{{ 'MX-Mobile-@2x.jpg' | asset_url | split:"?" | first }}">
                 <img src="{{ 'MX-Desktop-1920-@2x.jpg' | asset_url | split:"?" | first }}" alt="Homepage banner">
               </picture>
+              {% endcomment %}
 
               {% comment %}
               <picture>

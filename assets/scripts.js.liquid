@@ -380,7 +380,7 @@ $(function($){
   });
 
 
-  $(document).bind('click', '#add', function(){
+  $(document).on('click', '#add', function(){
     Shopify.onItemAdded = function(cart) {
       jQuery.getJSON('/cart.js', function(cart) {
         $('.cart-summary-item').html(updateCartSummaries());
