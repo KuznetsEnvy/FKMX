@@ -213,6 +213,17 @@
       "shop_now": "Compra ahora"
     }
   },
+  "popups": {
+    "hello": {
+      "hello_gorgerous": "Hola guapo(a)!",
+      "want_invites_html": "¿Te gustaría recibir invitaciones para <span>ofertas especiales<\/span> o eventos de Floatie Kings?",
+      "your_email": "Tu correo electronico",
+      "submit": "Únete a la vida flotante",
+      "no_thanks": "No gracias, no me gusta divertirme o recibir ofertas increíbles",
+      "welcome_floatlife": "Bienvenido a la vida flotante!",
+      "email_added": "Tu email ha sido añadido a nuestra lista de direcciones para recibir invitaciones especiales."
+    }
+  },
   "support_page": {
     "messages": {
     }
