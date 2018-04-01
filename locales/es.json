@@ -65,7 +65,8 @@
     "banners": {
       "memories_last_forever": "Crea recuerdos para toda la vida",
       "memories_last_forever_html": "<span>Crea recuerdos para<\/span><br \/><em>toda la vida<\/em>",
-      "bring_best_friend_html": "<span>Lleva a tu<\/span><br \/><em>mejor amigo<\/em>"
+      "bring_best_friend_html": "<span>Lleva a tu<\/span><br \/><em>mejor amigo<\/em>",
+      "welcome_to_the_float_life_html": "<span>Bienvenido a <\/span> <em>la Vida Flotante!<\/em>"
     },
     "misc": {
       "definite_article": "El",

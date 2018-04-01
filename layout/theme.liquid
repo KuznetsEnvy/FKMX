@@ -177,67 +177,21 @@
 
         {% if template contains 'index' or template contains 'product' %}
 
-          {% if settings.home_show_slideshow %}
-            <div id="bicolorBanner" class="banner-index" style="{% if template contains 'product' %}display:none;{% endif %}">
-
-
-              <picture>
-                <source media="(min-width: 1920px)" srcset="{{ 'BR-launch-desktop-bg-2800.png' | asset_url | split:"?" | first }}">
-                <source media="(min-width: 1440px)" srcset="{{ 'BR-launch-desktop-bg-1920.png' | asset_url | split:"?" | first }}">
-                <source media="(min-width: 1024px)" srcset="{{ 'BR-launch-desktop-bg-1440.png' | asset_url | split:"?" | first }}">
-                <source media="(min-width: 768px)" srcset="{{ 'BR-launch-desktop-bg-1024.png' | asset_url | split:"?" | first }}">
-                <source media="(min-width: 414px)" srcset="{{ 'BR-launch-mobile-bg-750.png' | asset_url | split:"?" | first }}">
-                <source media="(min-width: 200px)" srcset="{{ 'BR-launch-mobile-bg-375.png' | asset_url | split:"?" | first }}">
-                <img src="{{ 'BR-launch-desktop-bg-1440.png' | asset_url | split:"?" | first }}" alt="Homepage banner">
-              </picture>
-
-
-              <div class="br-launch-banner-text">
-                <mark>Estamos en México</mark>
-                <span>Envíos Ahora</span>
-                <span>Hasta <em>40%</em> de Descuento</span>
-              </div>
-
-              {% comment %}
-              <picture>
-                <source media="(min-width: 1920px)" srcset="{{ 'MX-Desktop-1920-@2x.jpg' | asset_url | split:"?" | first }}">
-                <source media="(min-width: 1400px)" srcset="{{ 'MX-Desktop-1400-@2x.jpg' | asset_url | split:"?" | first }}">
-                <source media="(min-width: 1024px)" srcset="{{ 'MX-Desktop-1024-@2x.jpg' | asset_url | split:"?" | first }}">
-                <source media="(min-width: 751px)" srcset="{{ 'MX-Desktop-1024-@2x.jpg' | asset_url | split:"?" | first }}">
-                <source media="(min-width: 300px)" srcset="{{ 'MX-Mobile-@2x.jpg' | asset_url | split:"?" | first }}">
-                <img src="{{ 'MX-Desktop-1920-@2x.jpg' | asset_url | split:"?" | first }}" alt="Homepage banner">
-              </picture>
-              {% endcomment %}
-
-              {% comment %}
-              <picture>
-                <source media="(min-width: 1920px)" srcset="{{ 'header_banner_textless_1920.png' | asset_url | split:"?" | first }}">
-                <source media="(min-width: 1440px)" srcset="{{ 'header_banner_textless_1440.png' | asset_url | split:"?" | first }}">
-                <source media="(min-width: 1024px)" srcset="{{ 'header_banner_textless_1024.png' | asset_url | split:"?" | first }}">
-                <source media="(min-width: 768px)" srcset="{{ 'header_banner_textless_768.png' | asset_url | split:"?" | first }}">
-                <source media="(min-width: 414px)" srcset="{{ 'header_banner_textless_750.png' | asset_url | split:"?" | first }}">
-                <source media="(min-width: 200px)" srcset="{{ 'header_banner_textless_414.png' | asset_url | split:"?" | first }}">
-                <img src="{{ 'header_banner_textless_1920.png' | asset_url | split:"?" | first }}" alt="Homepage banner">
-              </picture>
-
-
-              <div class="svg-text">
-                <img {{ deferimg }}src="{{ 'TEXT-SummerSALE_transparent.svg' | asset_url | split:"?" | first }}" alt="Make summer last">
-                <span class="visible-desktop">Shop sale</span>
-              </div>
-              {% endcomment %}
+          <div id="bicolorBanner" class="banner-index">
+            <picture>
+              <source media="(min-width: 1920px)" srcset="{{ 'header_banner_no_text_1920.png' | asset_url | split:"?" | first }}">
+              <source media="(min-width: 1650px)" srcset="{{ 'header_banner_no_text_1650.png' | asset_url | split:"?" | first }}">
+              <source media="(min-width: 1440px)" srcset="{{ 'header_banner_no_text_1440.png' | asset_url | split:"?" | first }}">
+              <source media="(min-width: 1024px)" srcset="{{ 'header_banner_no_text_1024.png' | asset_url | split:"?" | first }}">
+              <source media="(min-width: 751px)" srcset="{{ 'header_banner_no_text_768.png' | asset_url | split:"?" | first }}">
+              <source media="(min-width: 300px)" srcset="{{ 'header_banner_textless_750.png' | asset_url | split:"?" | first }}">
+              <img src="{{ 'header_banner_textless_414.png' | asset_url | split:"?" | first }}" alt="Homepage banner">
+            </picture>
+            <div id="banner-top-text">
+              {{ 'layout.banners.welcome_to_the_float_life_html' | t }}
             </div>
+          </div>
 
-            {% comment %}{% if settings.shipping-banner-enable %}
-              {% unless template contains 'product' %}
-              <div class="shipping-banner">
-                <div class="nn-secondary-middle">{{ 'cart.shipping.shipping-banner_html' | t }}
-                  <nobr>{{ settings.free_shipping_from | money }}</nobr>
-                </div>
-              </div>
-              {% endunless %}
-            {% endif %}{% endcomment %}
-          {% endif %}
 
         {% else %}
 
