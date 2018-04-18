@@ -1,42 +1,65 @@
-<footer id="page-footer" class="page-footer">
+<div id="test123" class="test123 hidden">
   <div class="container">
-    <div class="row section padless-top">
-      <!-- Logo and links -->
-      <div class="fourth column first">
-        {% comment %}
-        <div class="logo-column column mobile-logo">
-          <a href="{{ shop.url }}" title=""><img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ 'footer_logo.png' | asset_url | split:'?' | first }}" alt=""></a>
+    <div class="item">
+      <img src="{{ '001-payment-method.svg' | asset_url }}" alt="" />
+      <h4>¡Paga con tarjeta de crédito o efectivo a 3 meses sin intereses!</h4>
+      <span>Cuando usas mercado pago, puedes hacer compras utilizando tu tarjeta de crédito o efectivo y te ofrecemos 3 pagos mensuales sin intereses.</span>
+    </div>
+
+    <div class="divider"></div>
+    <div class="item">
+      <img src="{{ '002-delivery-truck.svg' | asset_url }}" alt="" />
+      <h4>¡Envío gratis y rápido en pedidos de más de XXX!</h4>
+      <span>Recibe más valor en pedidos de XXX o más, así es ¡nosotros nos haremos cargo de todos los gastos de envío!</span>
+    </div>
+
+    <div class="divider"></div>
+    <div class="item">
+      <img src="{{ '003-guarantee.svg' | asset_url }}" alt="" />
+      <h4>Compra y entrega 100% segura</h4>
+      <span>Nuestro equipo trabaja muy duro para garantizar que tengas la mejor experiencia de compra. Tus datos personales y la información de tu pago están asegurados y nuestro equipo siempre está disponible para responder tus preguntas.</span>
+    </div>
+  </div>
+</div>
+<footer id="page-footer" class="page-footer">
+  <div class="container wrap">
+    <div class="logo-col"><a href="{{ shop.url }}"><img {% comment %}src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-{% endcomment %}src="{{ 'FK-logo-square.svg' | asset_url }}" alt=""></a></div>
+    <div class="social-col">{% include 'social-links' %}</div>
+    <div class="menu b-nav1">
+      <div class="wrap"><div class="plug visible-mobile"><!--This is needed for correct flexbox alignment--></div><h3>Comprar</h3><div class="cross visible-mobile"></div></div>
+      <nav>
+        <a href="/">Todos los estilos</a>
+        <a href="/pages/reviews" class="hidden">Reseñas</a>
+      </nav>
+    </div>
+    <div class="menu b-nav2">
+      <div class="wrap"><div class="plug visible-mobile"><!--This is needed for correct flexbox alignment--></div><h3>Empresa</h3><div class="cross visible-mobile"></div></div>
+      <nav>
+        <a href="javascript:void(0)" class="invoke-popup-hello">Únete a la familia</a>
+      </nav>
+    </div>
+    <div class="menu b-nav3">
+      <div class="wrap"><div class="plug visible-mobile"><!--This is needed for correct flexbox alignment--></div><h3>Soporte</h3><div class="cross visible-mobile"></div></div>
+      <nav>
+        {% comment %}<a href="https://tools.usps.com/go/TrackConfirmAction_input" target="_blank">Rastreie seu pedido</a>{% endcomment %}
+        <a href="/pages/support">Soporte</a>
+      </nav>
+    </div>
+  </div>
+  <div class="copyright-stripe">
+    <div class="container">
+      <div class="container">
+        <div class="copy">
+          <div>{{ 'layout.footer.copyright' | t }} &copy; {{ "now" | date: "%Y" }} {{ shop.name }}.</div>
         </div>
-        {% endcomment %}
-
-        <ul class="plain inline list-divide">
-          {% for link in linklists.footer-2.links %}
-            <li>{{ link.title | link_to: link.url }}</li>
-          {% endfor %}
-        </ul>
-
       </div>
-
-      <!-- Social icons -->
-      <div class="fifth column second">
-        <div class="social-column align-left-desktop full column">
-          {% include 'social-links' %}
-        </div>
+      <div class="c-cards">
+        <img src="{{ 'card1.svg' | asset_url | split:'?' | first }}" alt="">
+        <img src="{{ 'card2.svg' | asset_url | split:'?' | first }}" alt="">
+        <img src="{{ 'card3.svg' | asset_url | split:'?' | first }}" alt="">
+        <img src="{{ 'card4.svg' | asset_url | split:'?' | first }}" alt="">
+        <img src="{{ 'card5.svg' | asset_url | split:'?' | first }}" alt="">
       </div>
-
-      <!-- Win cash line -->
-      <div class="fourth column">
-        {% comment %}
-        {% if template != 'product' and template != 'cart' %}
-          <div class="competition">
-            <a class="title ftc" href="/pages/win-cash">WANT TO <strong>WIN $5000 CASH</strong></a>
-            <button class="buy-btn" onclick='window.location.href="/pages/win-cash"'>ENTER HERE</button>
-          </div>
-        {% endif %}
-        {% endcomment %}
-      </div>
-
-      <div class="copy">{{ 'layout.footer.copyright' | t }} &copy; {{ "now" | date: "%Y" }} {{ shop.name }}.</div>
     </div>
   </div>
 </footer>

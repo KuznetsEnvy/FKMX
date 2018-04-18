@@ -468,6 +468,35 @@
     "hide_dividers": false,
     "homepage_feat_img_box": true,
     "hide_nav_home_dividers": false,
+    "sections": {
+      "as-seen-on": {
+        "type": "as-seen-on",
+        "blocks": {
+          "1523921531064": {
+            "type": "item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/globo-logo-4.png"
+            }
+          },
+          "1523921609628": {
+            "type": "item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/vogue-logo-4.png"
+            }
+          }
+        },
+        "block_order": [
+          "1523921531064",
+          "1523921609628"
+        ],
+        "settings": {
+          "header": "Como lo viste en",
+          "quote": "¡Floatie Kings es el ejemplo perfecto de como la demanda de un producto se vuelve una marca!",
+          "style": "font-size:1.5em; font-weight: 500; margin-bottom: 0.5em;",
+          "author": "Revista Vogue"
+        }
+      }
+    },
     "content_for_index": [
 
     ]

@@ -29,7 +29,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="msvalidate.01" content="0C0638265DB078357F8582F42D67896E"/>
   <link rel="canonical" href="{{ canonical_url }}"/>
-  <!link href="{{ 'styles.wufoo.scss.liquid' | asset_url }}" rel="stylesheet">
 
   <script src="{{ 'styles.js' | asset_url }}" defer></script>
 
@@ -52,7 +51,8 @@
 
   <script id="jquery" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" defer></script>
   <script id="jquery-cookies" src="{{ 'js.cookies-2.1.4.js' | asset_url | split:"?" | first }}" defer></script>
-  {% comment %}5
+
+  {% comment %}
   <script src="{{ 'exitintent.js' | asset_url | split:'?' | first }}" defer></script>{% endcomment %}
   <!--{{ 'api.jquery.js' | shopify_asset_url | script_tag }}-->
   <script src="{{ 'api.jquery.js' | shopify_asset_url }}" defer></script>
@@ -86,15 +86,6 @@
     <!--{{ 'jquery.elevatezoom.js' | asset_url | script_tag }}-->
     <script id="jquery_elevatezoom" src="{{ 'jquery.elevatezoom.js' | asset_url }}" defer></script>
   {% endif %}
-  {% comment %}{{ 'parallax.js' | asset_url | script_tag }}{% endcomment %}
-
-  {% comment %}
-  <!--{{ 'jquery.fancybox.js' | asset_url | script_tag }}-->
-  <script src="{{ 'jquery.fancybox.js' | asset_url | split:'?' | first }}" defer></script>
-  {{ 'jquery.fancybox.css' | asset_url | split:'?' | first | stylesheet_tag }}
-  {% endcomment %}
-
-  <script id="jquery_fancybox" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js" defer></script>
 
   <!-- Pinterest Pixel Code -->
   <img height="1" width="1" style="display:none;" alt="" src="https://ct.pinterest.com/?tid=8HcMxz0bQxu&value=0.00&quantity=1"/>
@@ -115,11 +106,11 @@
   {% comment %}
   <script src="//code.jquery.com/ui/1.12.0/jquery-ui.js" defer></script>{% endcomment %}
   <script src="//code.jquery.com/ui/1.12.0/jquery-ui.min.js" defer></script>
+  {% comment %}{% include 'judgeme_core' %}{% endcomment %}
 </head>
-
-<body class="template-{{ template | split: '.' | first }} {{ page_title | handle }}">
+<body class="template-{{ template | split: '.' | first }} {{ template | split: '.' | join: '-' }} {{ page_title | handle }}">
 <div id="loading-overlay" style="z-index: 999; position: fixed; top:0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items:center; background-color: white; display: none;">
-  <img src="{{ 'Preloader_21.gif' | asset_url | split:'?' | first }}" alt="loading image"/></div>
+  <img src="{{ 'FK_Crown_Loader2.gif' | asset_url | split:'?' | first }}" alt="loading image"/></div>
 <script>
     document.getElementById("loading-overlay").style.display = "flex";
 
@@ -137,36 +128,44 @@
                     adaptiveHeight: true,
                     autoStart: autostart,
                     pager: autostart,
+                    pagerCustom: '.bx-pager',
                     controls: false,
                     speed: 1000
                 });
             });
-        }()
+        }();
       {% endif %}
     };
-
-
 </script>
 
 <div id="header" class="cart">
   <div class="secure-payment"><img src="{{ 'icon-mercado-pago.png' | asset_url | split:'?' | first }}" alt="MercadoPago secure payment" /><span>{{ 'layout.header.secure_payment_html' | t }}</span><img src="{{ 'icon-paypal.png' | asset_url | split:'?' | first }}" alt="PayPal secure payment" /></div>
-  {% if settings.shipping-banner-enable %}
-    {% unless template contains 'product' %}
-    <div class="shipping-banner-top visible-desktop">
-      {{ 'cart.shipping.shipping-banner_html' | t }}
-      <nobr>{{ settings.free_shipping_from | money }}</nobr>
-    </div>
-    {% endunless %}
-  {% endif %}
 
   <div class="page-header">
-    <div><!-- This div is needed for flexbox alignment --></div>
     <a class="text-logo" href="{{ shop.url }}"><strong>Floatie</strong> Kings</a>
+    <div class="top-nav">
+      <div id="nav-icon3" class="visible-mobile hidden">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav class="visible-desktop">
+        <a href="javascript:void(0)" class="hidden">Shop</a>
+        <a href="javascript:void(0)" class="hidden">Our story</a>
+        <a href="javascript:void(0)" class="hidden invoke-popup-hello">Join the family</a>
+      </nav>
+    </div>
     <div class="cart-wrap">
-      <a class="current-cart cart-count {% if template != 'cart' %}toggle-cart-summary{% endif %}">{{ cart.item_count }}</a>
+      <a class="current-cart {% if template != 'cart' %}toggle-cart-summary{% endif %}">
+        <svg id="icon-cart" data-name="Cart icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 242.3 242.65">
+          <title>icon-cart</title>
+          <path class="cls-1" d="M25.65,244.65A23.55,23.55,0,0,1,8.2,236.9a23.1,23.1,0,0,1-5.78-17.39L18.17,74.21a7.73,7.73,0,0,1,8-7.12H51.41l.19-1.79C55.33,29.21,86.35,2,123.75,2a73.32,73.32,0,0,1,48.83,18.37,68.32,68.32,0,0,1,22.92,44.9l.17,1.82h25.18a8.18,8.18,0,0,1,8,7.12l15.76,145.38a23.05,23.05,0,0,1-5.79,17.32l-.07.08a21.65,21.65,0,0,1-16.82,7.66Zm-6.73-23.33v.11a6.51,6.51,0,0,0,6.73,6.73H221.91a6.6,6.6,0,0,0,6.78-6.69v-.13L213.79,83.52H195.85v18.81a8,8,0,0,1-8,8,8.53,8.53,0,0,1-8.52-8.52V83.52H68.29v18.81a8.52,8.52,0,0,1-17,0V83.52H33.82ZM123.75,17.93c-28.28,0-52,20.17-55.14,46.92l-.26,2.23H179.16l-.27-2.24a52.15,52.15,0,0,0-18.14-33.29A56.84,56.84,0,0,0,123.75,17.93Z" transform="translate(-2.35 -2)" />
+        </svg>
+        <span class="cart-count">{{ cart.item_count }}</span>
+      </a>
     </div>
   </div>
-
   {% include 'cart-summary' %}
 </div>
 
@@ -177,27 +176,13 @@
 
         {% if template contains 'index' or template contains 'product' %}
 
-          {% if template contains 'index' %}
-            <div id="bicolorBanner" class="banner-index">
-              <picture>
-                <source media="(min-width: 1920px)" srcset="{{ 'header_banner_no_text_1920.png' | asset_url | split:"?" | first }}">
-                <source media="(min-width: 1650px)" srcset="{{ 'header_banner_no_text_1650.png' | asset_url | split:"?" | first }}">
-                <source media="(min-width: 1440px)" srcset="{{ 'header_banner_no_text_1440.png' | asset_url | split:"?" | first }}">
-                <source media="(min-width: 1024px)" srcset="{{ 'header_banner_no_text_1024.png' | asset_url | split:"?" | first }}">
-                <source media="(min-width: 751px)" srcset="{{ 'header_banner_no_text_768.png' | asset_url | split:"?" | first }}">
-                <source media="(min-width: 300px)" srcset="{{ 'header_banner_textless_750.png' | asset_url | split:"?" | first }}">
-                <img src="{{ 'header_banner_textless_414.png' | asset_url | split:"?" | first }}" alt="Homepage banner">
-              </picture>
-              <div id="banner-top-text">
-                {{ 'layout.banners.welcome_to_the_float_life_html' | t }}
-              </div>
-            </div>
-          {% endif %}
-
+          <div class="shipping-banner-top">
+            ☀️ {{ 'cart.shipping.shipping-banner_html' | t }} <nobr>{{ settings.free_shipping_from | money }}</nobr> ☀️
+          </div>
 
         {% else %}
 
-          {% if template contains 'cart' or template contains 'page.support' or template contains 'page.win-cash' or template contains 'page.thank-you' or template contains 'index' %}
+          {% if template contains 'page.support' or template contains 'page.win-cash' or template contains 'page.thank-you' or template contains 'index' %}
             <div class="cart-header">
               {% if template contains 'cart' %}
                 {% if settings.cart_banner %}
@@ -232,20 +217,23 @@
                   <div class="nn-secondary-middle">{{ 'pages.win_cash.submit_details_html' | t }}</div>
                 </div>
               {% else %}
-                {% unless template contains 'page.thank-you' %}
-                {% if settings.shipping-banner-enable %}
-                  <div class="shipping-banner">
-                    <div class="nn-secondary-middle">{{ 'cart.shipping.shipping-banner_html' | t }}
-                      <nobr>{{ settings.free_shipping_from | money }}</nobr>
-                    </div>
-                  </div>
-                {% endif %}
+                {% unless template contains 'page.thank-you' or template contains 'cart' %}
+                  {% comment %}
+                    {% if settings.shipping-banner-enable %}
+                      <div class="shipping-banner">
+                        <div class="nn-secondary-middle">{{ 'cart.shipping.shipping-banner_html' | t }}
+                          <nobr>{{ settings.free_shipping_from | money }}</nobr>
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% endcomment %}
                 {% endunless %}
               {% endif %}
               <div id="header" style="display:none;"></div>
             </div> <!--  /.header -->
           {% endif %}
 
+        <a id="shop-now" name="shop-now"></a>
           {{ content_for_layout }}
       </div><!-- /#content -->
     </div><!-- /#page-wrap-content -->
@@ -255,8 +243,6 @@
 
 {% include 'mobile-navigation' %}
 {% comment %} {% include 'popup' %} {% endcomment %}
-
-{% include 'popup-hello' %}
 
 {% if template contains 'index' %}<script id="instafeed-script" src="https://cdnjs.cloudflare.com/ajax/libs/instafeed.js/1.4.1/instafeed.min.js" defer></script>{% endif %}
 <script src="{{ 'libs.js' | asset_url | split:"?" | first }}" defer></script>
@@ -361,21 +347,6 @@
     ga('send', 'pageview');
 </script>
 
-<script type="text/javascript">
-    document.getElementById('jquery_fancybox').addEventListener('load', function () {
-        $(document).ready(function () {
-            $("#various1").fancybox({
-                'width': '502px',
-                'height': '340px',
-                'titlePosition': 'inside',
-                'transitionIn': 'none',
-                'transitionOut': 'none',
-                'type': 'iframe'
-            });
-        });
-    });
-</script>
-
 <script src="https://use.fontawesome.com/791a439b99.js"></script>
 
 {% if gfonts != '' %}
@@ -416,5 +387,12 @@ Remarketing tags may not be associated with personally identifiable information 
     <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/881110676/?guid=ON&amp;script=0"/>
   </div>
 </noscript>
+
+{% if template contains 'product' %}
+  {% include 'popup-stock' %}
+{% else %}
+  {% include 'popup-hello' %}
+{% endif %}
+
 </body>
 </html>

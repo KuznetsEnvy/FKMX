@@ -14,16 +14,16 @@
     <div class="reading-column">
       <form action="/cart" method="post" id="cartform">
         <ul class="cart-items plain">
-          <li class="heading border-bottom cf">
+          <li class="heading border-bottom">
             <span class="description">{{ 'cart.label.description' | t }}</span>
             <span class="quantity">{{ 'cart.label.quantity' | t }}</span>
             <span class="price">{{ 'cart.label.total' | t }}</span>
           </li>
           {% for item in cart.items %}
-            <li class="item border-bottom cf">
-              <div class="description cf">
+            <li class="item border-bottom">
+              <div class="description">
                 <a class="image" href="{{ item.url }}">
-                  <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}"/>
+                  <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}" />
                 </a>
                 <div class="left">
                   <div>{{ item.product.title | link_to: item.product.url }}</div>
@@ -40,7 +40,7 @@
                       {% else %}
                         {{ p.last }}
                       {% endif %}
-                      <br/>
+                      <br />
                       {% endunless %}
                     </div>
                   {% endfor %}
@@ -50,17 +50,20 @@
                 </div>
               </div>
               {% comment %}
-              <div class="quantity">
-                <input class="select-on-focus" type="text" size="2" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}"/>
-              </div>
+                <div class="quantity">
+                  <input class="select-on-focus" type="text" size="2" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" />
+                </div>
               {% endcomment %}
               <div class="quantity">
-                <input class="left" type="button" onclick="decrementValue(this)" value="-"/>
-                <input class="select-on-focus" type="text" name="quantity" maxlength="2" data-id="{{ item.id }}" value="{{ item.quantity }}" max="10" size="1" name="updates[]" id="number"/>
-                <input class="right" type="button" onclick="incrementValue(this)" value="+"/>
+                <input class="left" type="button" onclick="decrementValue(this)" value="-" /><!--
+                --><input class="select-on-focus" type="text" name="quantity" maxlength="2" data-id="{{ item.id }}" value="{{ item.quantity }}" max="10" size="1" name="updates[]" id="number" /><!--
+                --><input class="right" type="button" onclick="incrementValue(this)" value="+" />
               </div>
 
-              <div class="price"><del>{{ item.product.compare_at_price_max | money }}</del> <h5>{{ item.line_price | money }}</h5></div>
+              <div class="price{% if item.variant.compare_at_price > item.variant.price %} on-sale{% endif %}">
+                {% if item.variant.compare_at_price > item.variant.price %}<del>{{ item.variant.compare_at_price | money }}</del>{% endif %}
+                <h5>{{ item.line_price | money }}</h5>
+              </div>
             </li>
           {% endfor %}
         </ul>
@@ -69,7 +72,9 @@
             <input type="submit" style="display:none;" class="alt" id="update-cart" name="update" value="{{ 'cart.general.update' | t }}"/>
             <div class="full column align-right">
               <div class="subtotal-wrap">
-                <div class="cart_total_left"><label for="checkout">{{ 'cart.label.subtotal' | t }}</label></div>
+                <div class="cart_total_left">
+                  <label for="checkout">{{ 'cart.label.subtotal' | t }}</label>
+                </div>
                 <h2 class="cart_total_right">{{ cart.total_price | money }}</h2>
               </div>
 
@@ -91,12 +96,12 @@
         {% endif %}
 
         <div class="shipping-banner cart">
-          <div class="nn-secondary-middle">{{ 'cart.shipping.shipping-banner_html' | t}} {{ settings.free_shipping_from | money }}</div>
+          <div class="nn-secondary-middle">{{ 'cart.shipping.shipping-banner_html' | t }} {{ settings.free_shipping_from | money }}</div>
         </div>
         <div class="border-bottom">
           <div class="row">
             <div class="column align-center" style="width:100%;margin-bottom: 1rem;">
-              <input style="width:100%" type="submit" id="checkout" name="checkout" value="{{ 'cart.general.checkout' | t }}"/>
+              <input style="width:100%" type="submit" id="checkout" name="checkout" value="{{ 'cart.general.checkout' | t }}" />
             </div>
             {% comment %}
               <div class="column align-center" style="width:100%">
@@ -104,7 +109,7 @@
               </div>
             {% endcomment %}
             <div class="column align-center cont" style="width:100%; margin-top: 15px;">
-              <a class="left continue" href="/" style="color: #000; border: 2px solid black; padding: 15px; margin-top: 15px;">{{ 'cart.general.keep' | t }}</a>
+              <a class="left continue" href="/">{{ 'cart.general.keep' | t }}</a>
             </div>
             <div class="clear"></div>
           </div>

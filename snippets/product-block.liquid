@@ -1,10 +1,15 @@
 <div class="product-block">
   <div class="product-item-inside">
-    <a class="img-wrap" href="{{ product.url }}"><img class="img-product-{{ product.handle }}" src="{{ product.images.last | product_img_url: 'large' | split:'?' | first }} "/></a>
+    <a {% if product.images.size > 1 %}class="img-wrap" {% endif %}href="{{ product.url }}">
+      {% if product.images.size > 1 %}
+        <img class="img-swap img-product-{{ product.handle }}" src="{{ product.images[1] | product_img_url: 'large' | split:'?' | first }} "/>
+      {% endif %}
+      <img class="img-primary img-product-{{ product.handle }}" src="{{ product | img_url: 'large' | split:'?' | first }} "/>
+    </a>
     {% if false and product.compare_at_price_max > product.price %}
       <span class="product-label sale">Sale</span>
     {% endif %}
-    <div class="info-wrap">
+    <a class="info-wrap" href="{{ product.url }}">
       <div class="product-title">{{ product.title }}</div>
       <div class="price-wrap">
         {% if product.compare_at_price_max > product.price %}
@@ -13,22 +18,14 @@
         {% else %}
           <span class="price amount">{{ product.price | money }}</span>
         {% endif %}
-
       </div>
-    </div>
-  </div>
-  <div class="cart-btn-home visible-desktop">
-    {% if product.available %}
-      <form class="product-form" id="product-form" action="/cart/add" method="post" enctype="multipart/form-data" data-product-id="{{ product.id }}">
-        <input type="hidden" value="{{ product.first_available_variant.id }}" id="product-select" name="id" class="hidden">
-        <input type="hidden" name="quantity" value="1" />
-        <button name="add" class="add-to-cart buy-now button button--black-gradient cart-btn cart-btn-desktop" id="add">{{ 'products.product.add_to_cart_html' | t }}</button>
-      </form>
-    {% else %}
-      <a href="https://form.jotform.me/70724374625458" id="various1" style="text-align:center" class="add-to-cart buy-now button button--black-gradient cart-btn cart-btn-desktop unavailable">{{ 'products.product.product_unavailable' | t }}</a>
-      {% comment %}
-      <button disabled="disabled" class="add-to-cart buy-now button button--black-gradient cart-btn cart-btn-desktop unavailable">{{ 'products.product.product_unavailable' | t }}</button>
-      {% endcomment %}
-    {% endif %}
+      <div class='jdgm-widget jdgm-preview-badge' data-id='{{ product.id }}'>{{ product.metafields.judgeme.badge }}</div>
+    </a>
   </div>
 </div>
+
+<style>
+  .section .jdgm-preview-badge{
+  text-align: center;
+}
+</style>

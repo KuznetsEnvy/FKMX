@@ -5,7 +5,7 @@
     <div class="inner">
       <p>
         <a href="/cart" style="float:left;font-size: 15px;"><i class="icon-cart slim"></i></a>
-        {{ 'cart.general.review_cart' | t }}
+          {{ 'cart.general.review_cart' | t }}
         <a class="toggle-cart-summary" style="float:right" href="#"><span class="fa fa-close"></span></a>
       </p>
 
@@ -21,41 +21,29 @@
         {% else %}
           <h5 class="cart-summary-title shippingmsg"><i class="fa fa-check-circle" aria-hidden="true"></i> {{ 'cart.shipping.got_free_shipping' | t }}</h5>
         {% endif %}
-        <div class="cart-summary-item-list ft ftw">
-          {% for item in cart.items %}
-            <div class="cart-summary-item ftr cf">
-              <span class="image ftc"><a href="{{ item.url }}" title=""><img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ item | img_url: 'small' }}" alt="{{ item.title }}"></a></span>
-              <span class="title-variant ftc">
-                <a class="title" href="{{ item.product.url | within: collection }}">
-                  {% if item.product.title contains 'Aaron Kai' %}
-                    {% assign title = item.product.title | split: ' ' %}
-                    {% assign s =  title | size %}
-                    <span style="font-weight:bold;">Aaron Kai</span>
-                    {% for i in (2..s) %}
-                      {{ title[i] }}
-                    {% endfor %}
-                  {% else %}
-                    {% assign title = item.product.title | split: ' ' %}
-                    {% assign s =  title | size %}
-                    <span style="font-weight:bold;">{{ title[0] }}</span>
-                    {% for i in (1..s) %}
-                      {{ title[i] }}
-                    {% endfor %}
-                  {% endif %}
-                </a>
-
-                {% unless item.variant.title contains 'Default' %}
-                  <span class="variant">{{ item.variant.title }}</span>
-                {% endunless %}
-                <span class="price ftc"><del>{{ item.product.compare_at_price_max | money }}</del> {{ item.price | money }}</span>
-                <a data-id="{{ item.variant_id }}" class="remove feature-col">{{ 'cart.general.remove' | t }}</a>
-              </span>
-              <span class="qty ftc">
-                <input type="number" class="micro select-on-focus" step="1" value="{{ item.quantity }}" />
-              </span>
-            </div>
-          {% endfor %}
-        </div>
+        <div class="cart-summary-wrap">
+          <div class="cart-summary-item-list ft ftw">
+            {% for item in cart.items %}
+              <div class="cart-summary-item ftr cf">
+                <span class="image ftc"><a href="{{ item.url }}" title=""><img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ item | img_url: 'small' }}" alt="{{ item.title }}"></a></span>
+                <span class="title-variant ftc">
+                  <a class="title" href="{{ item.product.url | within: collection }}">{{ item.product.title }}</a>
+                  {% unless item.variant.title contains 'Default' %}
+                    <span class="variant">{{ item.variant.title }}</span>
+                  {% endunless %}
+                  <span class="price ftc{% if item.variant.compare_at_price > item.variant.price %} on-sale{% endif %}">
+                    {% if item.variant.compare_at_price > item.variant.price %}<del>{{ item.variant.compare_at_price | money }}</del>{% endif %}
+                    {{ item.price | money }}
+                  </span>
+                  <a data-id="{{ item.variant_id }}" class="remove feature-col">{{ 'cart.general.remove' | t }}</a>
+                </span>
+                <span class="qty ftc">
+                  <input type="number" class="micro select-on-focus" step="1" value="{{ item.quantity }}" />
+                </span>
+              </div>
+            {% endfor %}
+          </div>
+        </div><!--./cart-summary-wrap-->
         <div class="cart-summary-footer">
           <div class="cart-summary-subtotal">
             {{ 'layout.cart_summary.subtotal' | t }} <span class="amount">{{ cart.total_price | money }}</span>
@@ -69,6 +57,7 @@
               <i class="fa fa-check-circle-o" aria-hidden="true"></i> {{ 'cart.shipping.free_shipping_added' | t }}
             </div>
           {% endif %}
+
           <div class="cart-summary-buttons cf">
             {% if settings.cart_side_onebutton %}
               <a id="checkout" class="btn checkout" href="/cart">{{ 'layout.cart_summary.cart' | t }}</a>
@@ -88,7 +77,6 @@
         <div class="shipping-banner">
           <div class="cart-summary-title shippingmsg nn-secondary-middle">{{ 'cart.shipping.add_for_free_shipping_html' | t: dif: dif }}</div>
         </div>
-        <!--h5 class="cart-summary-title shippingmsg err">ADD $75 FOR FREE SHIPPING</h5-->
         <div class="cart-summary-item-list ft ftw">
           <h5 class="cart-summary-title empty">{{ 'cart.general.empty' | t }}</h5>
         </div>
@@ -99,7 +87,7 @@
         </div>
 
       {% endif %}
-    </div>
+    </div><!--/.inner-->
     <!-- cart-summary -->
-  </div>
+  </div><!--/#cart-summary-->
 {% endif %}
