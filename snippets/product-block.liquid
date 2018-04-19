@@ -9,6 +9,16 @@
     {% if false and product.compare_at_price_max > product.price %}
       <span class="product-label sale">Sale</span>
     {% endif %}
+
+    {% if product.handle contains 'flamingo' %}
+      <span class="product-label sale fake-label hidden">Sale</span>
+    {% endif %}
+    {% if product.handle contains 'swan' %}
+      <span class="product-label new-in fake-label hidden">Sale</span>
+    {% endif %}
+    {% if product.handle contains 'unicorn' %}
+      <span class="product-label fake-label hidden">Envio 5 mar</span>
+    {% endif %}
     <a class="info-wrap" href="{{ product.url }}">
       <div class="product-title">{{ product.title }}</div>
       <div class="price-wrap">

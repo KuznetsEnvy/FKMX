@@ -60,6 +60,11 @@
             </div>
           </div>
           <div class='jdgm-widget jdgm-preview-badge' data-id='{{ product.id }}'>{{ product.metafields.judgeme.badge }}</div>
+
+          <div class="js-btn-daddy visible-mobile">
+            <button name="add" class="add-to-cart buy-now" id="add" data-variant-id="{{ product.variants.first.id }}">{{ 'products.product.add_to_cart_html' | t }}</button>
+          </div>
+
           <div class="add-ons-section">
             <div class="header">Adicionar ao carrinho:</div>
             <div class="add-ons-wrap">
