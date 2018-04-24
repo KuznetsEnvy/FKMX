@@ -1061,8 +1061,9 @@ $('a[rel=lightbox]').colorbox({ minWidth: '200', maxWidth: '96%', maxHeight: '96
         console.log("Defer images invoked");
         var imgDefer = document.getElementsByTagName('img');
         for (var i = 0; i < imgDefer.length; i++) {
-            if (imgDefer[i].getAttribute('data-src') && imgDefer[i].getAttribute('src').indexOf('transparent_pixel.png') > -1) {
-                console.log("deferring image: " + imgDefer[i]);
+            if (imgDefer[i].getAttribute('data-src') && imgDefer[i].getAttribute('src') && imgDefer[i].getAttribute('src').indexOf('transparent_pixel.png') > -1) {
+                console.log("deferring image:");
+                console.log(imgDefer[i]);
                 imgDefer[i].setAttribute('src', imgDefer[i].getAttribute('data-src'));
             }
         }
@@ -1097,7 +1098,7 @@ $('a[rel=lightbox]').colorbox({ minWidth: '200', maxWidth: '96%', maxHeight: '96
 
       });
     };
-    controlCartUpsell();
+    window.addEventListener('load', controlCartUpsell);
 
     $(document).on('click', '.add-ons-item .bttn, .add-ons-item .price', function (e) {
         var self = $(this);
@@ -1118,6 +1119,23 @@ $('a[rel=lightbox]').colorbox({ minWidth: '200', maxWidth: '96%', maxHeight: '96
         deferImages();
 
 
+        // function to obtain GET parameter from the address line
+        if (typeof getUrlParameter !== "function") {
+            var getUrlParameter = function getUrlParameter(sParam) {
+                var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                    sURLVariables = sPageURL.split('&'),
+                    sParameterName,
+                    i;
+
+                for (i = 0; i < sURLVariables.length; i++) {
+                    sParameterName = sURLVariables[i].split('=');
+
+                    if (sParameterName[0] === sParam) {
+                        return sParameterName[1] === undefined ? true : sParameterName[1];
+                    }
+                }
+            };
+        }
         var show_new_block1 = getUrlParameter('shownewblock1');
         if (show_new_block1) {
             $('#test123').removeClass('hidden');

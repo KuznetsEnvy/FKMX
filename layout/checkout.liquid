@@ -8,12 +8,26 @@
 
     <title>{{ shop.name }} - {{ page_title }}</title>
 
+    <!-- content for header -->
     {{ content_for_header }}
 
+    <!-- checkout stylesheets -->
     {{ checkout_stylesheets }}
+
+    <!-- checkout scripts -->
     {{ checkout_scripts }}
+
   </head>
   <body>
+  <div id="header" class="cart">
+    <div class="secure-payment"><img src="{{ 'icon-mercado-pago.png' | asset_url | split:'?' | first }}" alt="MercadoPago secure payment" /><span>{{ 'layout.header.secure_payment_html' | t }}</span><img src="{{ 'icon-paypal.png' | asset_url | split:'?' | first }}" alt="PayPal secure payment" /></div>
+
+    <div class="page-header">
+      <a class="text-logo" href="{{ shop.url }}"><strong>Floatie</strong> Kings</a>
+      <div class="top-nav"><!-- filler --></div>
+      <div class="cart-wrap"><!-- filler --></div>
+  </div>
+
     <div class="banner" data-header>
       <div class="wrap">
         {{ content_for_logo }}

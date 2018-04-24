@@ -52,8 +52,7 @@
   <script id="jquery" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" defer></script>
   <script id="jquery-cookies" src="{{ 'js.cookies-2.1.4.js' | asset_url | split:"?" | first }}" defer></script>
 
-  {% comment %}
-  <script src="{{ 'exitintent.js' | asset_url | split:'?' | first }}" defer></script>{% endcomment %}
+  {% comment %}<script src="{{ 'exitintent.js' | asset_url | split:'?' | first }}" defer></script>{% endcomment %}
   <!--{{ 'api.jquery.js' | shopify_asset_url | script_tag }}-->
   <script src="{{ 'api.jquery.js' | shopify_asset_url }}" defer></script>
 
@@ -112,34 +111,36 @@
 <div id="loading-overlay" style="z-index: 999; position: fixed; top:0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items:center; background-color: white; display: none;">
   <img src="{{ 'FK_Crown_Loader2.gif' | asset_url | split:'?' | first }}" alt="loading image"/></div>
 <script>
-    document.getElementById("loading-overlay").style.display = "flex";
+  document.getElementById("loading-overlay").style.display = "flex";
 
-    window.onload = function () {
-        document.getElementById("loading-overlay").style.display = "none";
-      {% if template contains 'product' %}
-        var initBxSlider = function () {
-            $(function () {
-                var autostart = $('.bxslider li').length > 1 ? true : false;
+  var fkShowSite = function () {
+    document.getElementById("loading-overlay").style.display = "none";
+    {% if template contains 'product' %}
+      var initBxSlider = function () {
+        $(function () {
+          var autostart = $('.bxslider li').length > 1 ? true : false;
 
-                $('.bxslider').bxSlider({
-                    responsive: true,
-                    touchEnabled: true,
-                    auto: true,
-                    adaptiveHeight: true,
-                    autoStart: autostart,
-                    pager: autostart,
-                    pagerCustom: '.bx-pager',
-                    controls: false,
-                    speed: 1000
-                });
-            });
-        }();
-      {% endif %}
-    };
+          $('.bxslider').bxSlider({
+              responsive: true,
+              touchEnabled: true,
+              auto: true,
+              adaptiveHeight: true,
+              autoStart: autostart,
+              pager: autostart,
+              pagerCustom: '.bx-pager',
+              controls: false,
+              speed: 1000
+          });
+        });
+      }();
+    {% endif %}
+  };
+
+  window.addEventListener("load", fkShowSite);
 </script>
 
 <div id="header" class="cart">
-  <div class="secure-payment"><img src="{{ 'icon-mercado-pago.png' | asset_url | split:'?' | first }}" alt="MercadoPago secure payment" /><span>{{ 'layout.header.secure_payment_html' | t }}</span><img src="{{ 'icon-paypal.png' | asset_url | split:'?' | first }}" alt="PayPal secure payment" /></div>
+  <div class="secure-payment"><img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ 'icon-mercado-pago.png' | asset_url | split:'?' | first }}" alt="MercadoPago secure payment" /><span>{{ 'layout.header.secure_payment_html' | t }}</span><img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ 'icon-paypal.png' | asset_url | split:'?' | first }}" alt="PayPal secure payment" /></div>
 
   <div class="page-header">
     <a class="text-logo" href="{{ shop.url }}"><strong>Floatie</strong> Kings</a>

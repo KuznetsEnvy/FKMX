@@ -2478,6 +2478,39 @@ ul.inline.list-divide li:first-child {
 
   }
 }
+.secure-payment {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: "Brandon Grotesque";
+  font-weight: 500;
+  font-size: 2.9vw;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.2vw;
+  background-color: #f8f8f8;
+
+  @media #{$desktop} {
+    font-size: 0.8vw;
+    justify-content: center;
+  }
+
+  span {
+    text-align: center;
+    @media #{$desktop} {
+      margin: 0 5em;
+    }
+  }
+
+  & > img {
+    height: 6.4vw;
+
+    @media #{$desktop} {
+      height: 1.7vw;
+    }
+  }
+
+}
 
 .menu > ul > li {
   display: inline-block;
@@ -5170,24 +5203,31 @@ a#upsellclosebtn {
 #cartform {
   .border-bottom {
     input[name="checkout"] {
-      text-transform: uppercase;
+      font-size: 4vmin;
       font-weight: 700;
+      line-height: normal;
+      text-transform: uppercase;
       letter-spacing: 1px;
-      padding: 15px 0;
+      padding: 0.75em 0;
+
+      @include desktop {
+        font-size: 1.25vw;
+      }
     }
     .continue {
-      color: white;
-      background: $dodger-blue;
-      border-width: 0;
+      color: $dodger-blue;
+      background: white;
+      border: 2px solid $dodger-blue;
       text-transform: uppercase;
       font-weight: 700;
       letter-spacing: 1px;
-      padding: 15px 0;
+      padding: 0.75em 0;
       display: block;
       margin-top: 0;
 
       &:hover {
-        background: $jungle-green;
+        color: $jungle-green;
+        border-color: $jungle-green;
       }
     }
     .column.align-center.cont {
@@ -7433,6 +7473,15 @@ b {
   }
 }
 
+.additional-checkout-buttons {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.additional-checkout-button--paypal-express {
+  width: 100%;
+  height: 2.929em;
+}
+
 .banner-best-friend {
   @media (max-width: 767px) {
     width: 100vw;
@@ -7636,39 +7685,7 @@ b {
   }
 }
 
-.secure-payment {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  font-family: "Brandon Grotesque";
-  font-weight: 500;
-  font-size: 2.9vw;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 0.2vw;
-  background-color: #f8f8f8;
 
-  @media #{$desktop} {
-    font-size: 0.8vw;
-    justify-content: center;
-  }
-
-  span {
-    text-align: center;
-    @media #{$desktop} {
-      margin: 0 5em;
-    }
-  }
-
-  & > img {
-    height: 6.4vw;
-
-    @media #{$desktop} {
-      height: 1.7vw;
-    }
-  }
-
-}
 
 .show-desc.related-product-list .item .desc {
   display: flex;
@@ -7708,6 +7725,7 @@ b {
     }
     .grid {
       overflow-x: scroll;
+      -webkit-overflow-scrolling: touch;
 
       .grid-item {
         display: inline-flex;
