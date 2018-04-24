@@ -53,6 +53,9 @@
           <div class="product-title">
             <h1 class="title" itemprop="name">{{ product.title }}</h1>
           </div>
+          
+          
+          
           <div class="product-price">
             <div id="price" class="product-price {% if product.variants.size == 1 and product.compare_at_price_max > product.price %}on-sale{% endif %}">
               {% if product.variants.size == 1 and product.compare_at_price_max > product.price %}<del>{{ product.compare_at_price_max | money }}</del>{% endif %}
