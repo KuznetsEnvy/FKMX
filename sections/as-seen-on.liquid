@@ -4,7 +4,7 @@
     <div class="block-content">
       <div class="m-logos-list">
         {% for block in section.blocks %}
-            <img class="m-logos-item" src="{{ block.settings.image | img_url: '1024x' }}" />
+            <img class="m-logos-item" src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ block.settings.image | img_url: '1024x' }}" />
         {% endfor %}
       </div>
       <div class="text" style="{{ section.settings.style }}">“{{ section.settings.quote }}”</div>

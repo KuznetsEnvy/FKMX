@@ -1062,8 +1062,8 @@ $('a[rel=lightbox]').colorbox({ minWidth: '200', maxWidth: '96%', maxHeight: '96
         var imgDefer = document.getElementsByTagName('img');
         for (var i = 0; i < imgDefer.length; i++) {
             if (imgDefer[i].getAttribute('data-src') && imgDefer[i].getAttribute('src') && imgDefer[i].getAttribute('src').indexOf('transparent_pixel.png') > -1) {
-                console.log("deferring image:");
-                console.log(imgDefer[i]);
+                // console.log("deferring image:");
+                // console.log(imgDefer[i]);
                 imgDefer[i].setAttribute('src', imgDefer[i].getAttribute('data-src'));
             }
         }
