@@ -1,21 +1,21 @@
 <div id="test123" class="test123 hidden">
   <div class="container">
     <div class="item">
-      <img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ '001-payment-method.svg' | asset_url }}" alt="" />
+      <img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ '001-payment-method.svg' | asset_url | split: '?' | first }}" alt="" />
       <h4>¡Paga con tarjeta de crédito o efectivo a 3 meses sin intereses!</h4>
       <span>Cuando usas mercado pago, puedes hacer compras utilizando tu tarjeta de crédito o efectivo y te ofrecemos 3 pagos mensuales sin intereses.</span>
     </div>
 
     <div class="divider"></div>
     <div class="item">
-      <img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ '002-delivery-truck.svg' | asset_url }}" alt="" />
+      <img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ '002-delivery-truck.svg' | asset_url | split: '?' | first }}" alt="" />
       <h4>¡Envío gratis y rápido en pedidos de más de XXX!</h4>
       <span>Recibe más valor en pedidos de XXX o más, así es ¡nosotros nos haremos cargo de todos los gastos de envío!</span>
     </div>
 
     <div class="divider"></div>
     <div class="item">
-      <img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ '003-guarantee.svg' | asset_url }}" alt="" />
+      <img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ '003-guarantee.svg' | asset_url | split: '?' | first }}" alt="" />
       <h4>Compra y entrega 100% segura</h4>
       <span>Tus datos personales y la información de tu pago están asegurados y nuestro equipo siempre está disponible para responder tus preguntas.</span>
     </div>
@@ -23,7 +23,7 @@
 </div>
 <footer id="page-footer" class="page-footer">
   <div class="container wrap">
-    <div class="logo-col"><a href="{{ shop.url }}"><img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ 'FK-logo-square.svg' | asset_url }}" alt=""></a></div>
+    <div class="logo-col"><a href="{{ shop.url }}"><img src="{{ 'transparent_pixel.png' | asset_url | split: '?' | first }}" data-src="{{ 'FK-logo-square.svg' | asset_url | split: '?' | first }}" alt=""></a></div>
     <div class="social-col">{% include 'social-links' %}</div>
     <div class="menu b-nav1">
       <div class="wrap"><div class="plug visible-mobile"><!--This is needed for correct flexbox alignment--></div><h3>Comprar</h3><div class="cross visible-mobile"></div></div>

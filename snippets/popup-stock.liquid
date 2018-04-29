@@ -20,7 +20,14 @@
         </div>
       </form>
     </div>
-    <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='PTITLE';ftypes[1]='text';fnames[2]='PSKU';ftypes[2]='text';fnames[3]='PLINK';ftypes[3]='url';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+    <!-- This may become outdated. If so, will have to update mc-validate.js from //s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js and change ?1 to ?2 etc. -->
+    <script async id="mc-validate" type='text/javascript' src="{{ 'mc-validate.js' | asset_url | split: '?' | first | append: '?1' }}"></script>
+    <script type='text/javascript'>
+        function mcStockInit() {
+            (function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='PTITLE';ftypes[1]='text';fnames[2]='PSKU';ftypes[2]='text';fnames[3]='PLINK';ftypes[3]='url';}(jQuery));var $mcj = jQuery.noConflict(true);
+        }
+        document.getElementById('mc-validate').addEventListener('load', mcStockInit);
+    </script>
     <!--End mc_embed_signup-->
   </div>
 </div>

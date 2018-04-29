@@ -21,7 +21,7 @@
     {% endif %}
     <a class="info-wrap" href="{{ product.url }}">
       <div class="product-title">{{ product.title }}</div>
-      <div class="price-wrap">
+      <div class="price-wrap product-price">
         {% if product.compare_at_price_max > product.price %}
           <del>{{ product.compare_at_price | money }}</del>
           <span class="sale-price">{{ product.price | money }}</span>

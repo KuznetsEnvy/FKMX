@@ -1,4 +1,86 @@
 <!-- Start product template -->
+
+<!-- region Countdown -->
+<div class="countdown-stripe-wrap visible-desktop">
+  <div id="countdown-stripe"></div>
+</div>
+
+<script>
+    if (typeof countdownSale !== "function") {
+        var countdownSale = function countdownSale() {
+            //Remembering visit datetime
+            var discountVisitTime = Cookies.get('discountVisitTime'); // string
+            if (!discountVisitTime) {
+                var discountVisitTime = new Date(); // object
+                Cookies.set('discountVisitTime', discountVisitTime); // string
+            }
+
+            // Set the date we're counting down to
+            var countDownDate = new Date(discountVisitTime).getTime() + 16*60*60*1000;
+
+            // Update the count down every 1 second
+            var x = setInterval(function() {
+
+                // Get todays date and time
+                var now = new Date().getTime();
+
+                // Find the distance between now an the count down date
+                var distance = countDownDate - now;
+
+                if (distance < 0) {
+                    discountVisitTime = new Date();
+                    Cookies.set('discountVisitTime', discountVisitTime);
+                    countDownDate = discountVisitTime.getTime() + 16*60*60*1000;
+                }
+
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                hours += days*24;
+                if (hours   < 10) {hours   = "0"+hours;}
+                if (minutes < 10) {minutes = "0"+minutes;}
+                if (seconds < 10) {seconds = "0"+seconds;}
+
+                // Display the result in the element with id="demo"
+                document.getElementById("countdown-stripe").innerHTML = "TODO A 20% DE DESCUENTO - <span>¡Apúrate!</span> <strong>" + hours + ":" + minutes + ":" + seconds + "</strong>";
+
+                // If the count down is finished, write some text
+                if (distance < 0) {
+                    // clearInterval(x);
+                    document.getElementById("countdown-stripe").innerHTML = "EXPIRED";
+                }
+            }, 1000);
+        };
+    }
+
+    window.addEventListener('load', countdownSale);
+
+    var initBxSlider = function () {
+        $(function () {
+            var autostart = $('.bxslider li').length > 1 ? true : false;
+
+            $('.bxslider').bxSlider({
+                responsive: true,
+                touchEnabled: true,
+                auto: true,
+                adaptiveHeight: true,
+                autoStart: autostart,
+                pager: autostart,
+                pagerCustom: '.bx-pager',
+                controls: false,
+                speed: 1000
+            });
+        });
+    };
+    window.addEventListener('load', initBxSlider);
+
+</script>
+<!-- endregion -->
+
+
 {% comment %}
 <div class="explanation">
   <img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ 'icon-white-megaphone.svg' | asset_url | split:'?' | first }}" /><em>Pedido por adelantado</em><span> - <span class="red">envíos en 15 días</span> -  Hasta 40% de descuento</span>
@@ -56,16 +138,26 @@
           
           
           
-          <div class="product-price">
-            <div id="price" class="product-price {% if product.variants.size == 1 and product.compare_at_price_max > product.price %}on-sale{% endif %}">
-              {% if product.variants.size == 1 and product.compare_at_price_max > product.price %}<del>{{ product.compare_at_price_max | money }}</del>{% endif %}
-              {{ product.price | money }}
-            </div>
+          <div id="price" class="product-price">
+            {% if product.compare_at_price_max > product.price %}
+              <del>{{ product.compare_at_price_max | money }}</del>
+              <span class="sale-price">{{ product.price | money }}</span>
+            {% else %}
+              <span class="price amount">{{ product.price | money }}</span>
+            {% endif %}
           </div>
           <div class='jdgm-widget jdgm-preview-badge' data-id='{{ product.id }}'>{{ product.metafields.judgeme.badge }}</div>
 
-          <div class="js-btn-daddy visible-mobile">
-            <button name="add" class="add-to-cart buy-now" id="add" data-variant-id="{{ product.variants.first.id }}">{{ 'products.product.add_to_cart_html' | t }}</button>
+          <div class="visible-mobile">
+            {% if product.available %}
+              <div class="js-btn-daddy">
+                <button name="add" class="add-to-cart buy-now" id="add" data-variant-id="{{ product.variants.first.id }}">{{ 'products.product.add_to_cart_html' | t }}</button>
+              </div>
+            {% else %}
+              <div class="rte">
+                <a href="javascript:void(0)" style="text-align:center" class="back-in-stock add-to-cart notify button button--black-gradient cart-btn cart-btn-desktop unavailable"> {{'products.product.product_unavailable_html' | t }}</a>
+              </div>
+            {% endif %}
           </div>
 
           <div class="add-ons-section">
@@ -139,7 +231,6 @@
               {% endif %}
             {% endunless %}
 
-
             <div id="product-variants" class="{% if hide_default_title %} hidden{% endif %}">
               <select id="product-select" name="id" class="hidden">
                 {% for variant in product.variants %}
@@ -147,8 +238,6 @@
                 {% endfor %}
               </select>
             </div>
-
-
 
             <div class="js-btn-daddy">
               <button name="add" class="add-to-cart buy-now" id="add" data-variant-id="{{ product.variants.first.id }}">{{ 'products.product.add_to_cart_html' | t }}</button>
@@ -432,6 +521,8 @@
 <script type="text/javascript">
     document.getElementById('jquery').addEventListener('load', function() {
         //Willstagram code was here.
+
+        loadStyleSheet("{{ 'jquery.bxslider.css' | asset_url | split:'?' | first }}");
     });
 </script>
 

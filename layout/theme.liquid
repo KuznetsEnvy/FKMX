@@ -1,9 +1,7 @@
 <!doctype html>
-<!--[if IE 8]>
-<html class="no-js ie8" lang="en"> <![endif]-->
-<!--[if IE 9]>
-<html class="no-js ie9" lang="en"> <![endif]-->
-<!--[if (gt IE 10)|!(IE)]><!-->
+<!--[if IE]>
+<html class="no-js ie" lang="en"> <![endif]-->
+<!--[if !(IE)]><!-->
 <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
   <!-- Canopy v1.0.10 -->
@@ -12,7 +10,7 @@
   <!--[if IE]>
   <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'/><![endif]-->
 
-  <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/png"/>
+  <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url | split: '?' | first }}" type="image/png"/>
 
   <title>
     {{ page_title }}{% if current_tags %} &ndash; {{ 'general.meta.tagged' | t }} "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t }} {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
@@ -50,7 +48,7 @@
   {% endif %}
 
   <script id="jquery" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" defer></script>
-  <script id="jquery-cookies" src="{{ 'js.cookies-2.1.4.js' | asset_url | split:"?" | first }}" defer></script>
+  <script id="jquery-cookies" src="{{ 'js.cookies-2.2.0.min.js' | asset_url | split:"?" | first }}" defer></script>
 
   {% comment %}<script src="{{ 'exitintent.js' | asset_url | split:'?' | first }}" defer></script>{% endcomment %}
   <!--{{ 'api.jquery.js' | shopify_asset_url | script_tag }}-->
@@ -96,8 +94,10 @@
   <!-- Pinterest visitor -->
   <img height="1" width="1" style="display:none;" alt="" src="https://ct.pinterest.com/?tid=8HcMxz0bQxu&value=0.00&quantity=1"/>
 
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-instagram/0.3.1/instagram.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.1/isotope.pkgd.min.js" defer></script>
+  {% comment %}
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-instagram/0.3.1/instagram.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.1/isotope.pkgd.min.js" defer></script>
+  {% endcomment %}
 
   <!-- BeginConsistentCartAddon -->
   <script src="{{ "consistent_cart_addon.min.js" | asset_url | split:'?' | first }}" defer></script>
@@ -109,7 +109,10 @@
   {% comment %}
   <script src="//code.jquery.com/ui/1.12.0/jquery-ui.js" defer></script>{% endcomment %}
   <script src="//code.jquery.com/ui/1.12.0/jquery-ui.min.js" defer></script>
-  {% comment %}{% include 'judgeme_core' %}{% endcomment %}
+  {% include 'judgeme_core' %}
+
+  <link rel="stylesheet" href="{{ 'responsivelyLazy.min.css' | asset_url | split: '?' | first }}">
+  <script async src="{{ 'responsivelyLazy.min.js' | asset_url | split: '?' | first }}"></script>
 </head>
 <body class="template-{{ template | split: '.' | first }} {{ template | split: '.' | join: '-' }} {{ page_title | handle }}">
 <div id="loading-overlay" style="z-index: 999; position: fixed; top:0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items:center; background-color: white; display: none;">
@@ -119,32 +122,17 @@
 
   var fkShowSite = function () {
     document.getElementById("loading-overlay").style.display = "none";
-    {% if template contains 'product' %}
-      var initBxSlider = function () {
-        $(function () {
-          var autostart = $('.bxslider li').length > 1 ? true : false;
-
-          $('.bxslider').bxSlider({
-              responsive: true,
-              touchEnabled: true,
-              auto: true,
-              adaptiveHeight: true,
-              autoStart: autostart,
-              pager: autostart,
-              pagerCustom: '.bx-pager',
-              controls: false,
-              speed: 1000
-          });
-        });
-      }();
-    {% endif %}
   };
 
   window.addEventListener("load", fkShowSite);
 </script>
 
 <div id="header" class="cart">
-  <div class="secure-payment"><img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ 'icon-mercado-pago.png' | asset_url | split:'?' | first }}" alt="MercadoPago secure payment" /><span>{{ 'layout.header.secure_payment_html' | t }}</span><img src="{{ 'transparent_pixel.png' | asset_url | split:"?" | first }}" data-src="{{ 'icon-paypal.png' | asset_url | split:'?' | first }}" alt="PayPal secure payment" /></div>
+  <div class="secure-payment"><!--
+  --><img alt="Mercado Pago" src="{{ 'icon-mercado-pago.png' | asset_url | split:'?' | first }}" srcset="{{ 'icon-mercado-pago.png' | asset_img_url: '40x' | split:'?' | first }} 40w, {{ 'icon-mercado-pago.png' | asset_img_url: '60x' | split:'?' | first }} 60w, {{ 'icon-mercado-pago.png' | asset_img_url: '80x' | split:'?' | first }} 80w, {{ 'icon-mercado-pago.png' | asset_img_url: '100x' | split:'?' | first }} 100w, {{ 'icon-mercado-pago.png' | asset_img_url: '120x' | split:'?' | first }} 120w, {{ 'icon-mercado-pago.png' | asset_img_url: '140x' | split:'?' | first }} 140w" /><!--
+  --><span>{{ 'layout.header.secure_payment_html' | t }}</span><!--
+  --><img alt="PayPal" src="{{ 'icon-paypal.png' | asset_url | split:'?' | first }}" srcset="{{ 'icon-paypal.png' | asset_img_url: '40x' | split:'?' | first }} 40w, {{ 'icon-paypal.png' | asset_img_url: '60x' | split:'?' | first }} 60w, {{ 'icon-paypal.png' | asset_img_url: '80x' | split:'?' | first }} 80w, {{ 'icon-paypal.png' | asset_img_url: '100x' | split:'?' | first }} 100w, {{ 'icon-paypal.png' | asset_img_url: '120x' | split:'?' | first }} 120w, {{ 'icon-paypal.png' | asset_img_url: '140x' | split:'?' | first }} 140w" /><!--
+  --></div>
 
   <div class="page-header">
     <a class="text-logo" href="{{ shop.url }}"><strong>Floatie</strong> Kings</a>
@@ -393,11 +381,11 @@ Remarketing tags may not be associated with personally identifiable information 
   </div>
 </noscript>
 
-{% if template contains 'product' %}
-  {% include 'popup-stock' %}
-{% else %}
+
   {% include 'popup-hello' %}
-{% endif %}
+
+  {% include 'popup-stock' %}
+
 
 </body>
 </html>
