@@ -58,25 +58,6 @@
 
     window.addEventListener('load', countdownSale);
 
-    var initBxSlider = function () {
-        $(function () {
-            var autostart = $('.bxslider li').length > 1 ? true : false;
-
-            $('.bxslider').bxSlider({
-                responsive: true,
-                touchEnabled: true,
-                auto: true,
-                adaptiveHeight: true,
-                autoStart: autostart,
-                pager: autostart,
-                pagerCustom: '.bx-pager',
-                controls: false,
-                speed: 1000
-            });
-        });
-    };
-    window.addEventListener('load', initBxSlider);
-
 </script>
 <!-- endregion -->
 
@@ -114,17 +95,17 @@
           {% if product.images.size > 1 %}
             <ul class="bxslider">
               {% for image in product.images %}
-                <li><img class="main-img" src="{{ image | product_img_url: '1024x1024' }}" alt="{{ image.alt | escape }}" /></li>
+                <li><img class="main-img" src="{{ image | product_img_url: '1024x1024' | split: '?' | first }}" alt="{{ image.alt | escape }}" /></li>
               {% endfor %}
             </ul>
             <div class="bx-pager">
               {% for image in product.images %}
-                <a href="" data-slide-index="{{ forloop.index0 }}"><img src="{{ image | product_img_url: '180x180' }}" alt="" /></a>
+                <a href="" data-slide-index="{{ forloop.index0 }}"><img src="{{ image | product_img_url: '180x180' | split: '?' | first }}" alt="" /></a>
               {% endfor %}
             </div>
           {% else %}
             <ul>
-              <li><img class="main-img" src="{{ featured_image | product_img_url: '1024x1024' }}" alt="{{ featured_image.alt | escape }}" /></li>
+              <li><img class="main-img" src="{{ featured_image | product_img_url: '1024x1024' | split: '?' | first }}" alt="{{ featured_image.alt | escape }}" /></li>
             </ul>
           {% endif %}
         </div>
@@ -135,9 +116,7 @@
           <div class="product-title">
             <h1 class="title" itemprop="name">{{ product.title }}</h1>
           </div>
-          
-          
-          
+
           <div id="price" class="product-price">
             {% if product.compare_at_price_max > product.price %}
               <del>{{ product.compare_at_price_max | money }}</del>
@@ -518,12 +497,26 @@
 </div>
 
 <script>products.id{{ product.id }} = {{ product | json }};</script>
+<script id="bxslider" src="{{ 'jquery.bxslider.min.js' | asset_url | split:'?' | first }}" defer></script>
 <script type="text/javascript">
-    document.getElementById('jquery').addEventListener('load', function() {
-        //Willstagram code was here.
+    function initBxSlider() {
+        var autostart = $('.bxslider li').length > 1 ? true : false;
 
-        loadStyleSheet("{{ 'jquery.bxslider.css' | asset_url | split:'?' | first }}");
-    });
+        console.log($('.bxslider'));
+        $('.bxslider').bxSlider({
+            responsive: true,
+            touchEnabled: true,
+            auto: true,
+            adaptiveHeight: true,
+            autoStart: autostart,
+            pager: autostart,
+            pagerCustom: '.bx-pager',
+            controls: false,
+            speed: 1000
+        });
+
+    };
+    window.addEventListener('load', initBxSlider);
 </script>
 
 {% include 'related-products' %}
