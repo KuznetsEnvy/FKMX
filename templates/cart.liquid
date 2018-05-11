@@ -77,6 +77,7 @@
                 </div>
                 <h2 class="cart_total_right">{{ cart.total_price | money }}</h2>
               </div>
+              {%  include 'installment-notification' with cart.total_price %}
 
               <div class="border-bottom visible-mobile">
                 <div class="row">
