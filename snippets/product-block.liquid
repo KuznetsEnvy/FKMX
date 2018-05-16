@@ -19,6 +19,10 @@
     {% if product.handle contains 'unicorn' %}
       <span class="product-label fake-label hidden">Envio 5 mar</span>
     {% endif %}
+
+    {% unless product.available %}
+      <span class="product-label sale">AGOTADO</span>
+    {% endunless %}
     <a class="info-wrap" href="{{ product.url }}">
       <div class="product-title">{{ product.title }}</div>
       <div class="price-wrap product-price">

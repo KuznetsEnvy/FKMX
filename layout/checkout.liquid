@@ -17,6 +17,80 @@
     <!-- checkout scripts -->
     {{ checkout_scripts }}
 
+    <script>
+        function findAncestor(el, cls) {
+            while ((el = el.parentElement) && !el.classList.contains(cls));
+            return el;
+        }
+        /* region Previous code */
+        if (window.location.href.indexOf('checkout') > -1 && document.location.href.indexOf('thank_you') === -1 && document.location.href.indexOf('orders') === -1) {
+            var getWindowWidth = function() {
+                var w = window,
+                    d = document,
+                    e = d.documentElement,
+                    g = d.getElementsByTagName('body')[0],
+                    x = w.innerWidth || e.clientWidth || g.clientWidth;
+
+                return x;
+            }
+
+            var findLabelForControl = function(el) {
+                var idVal = el.id;
+                labels = document.getElementsByTagName('label');
+                for( var i = 0; i < labels.length; i++ ) {
+                    if (labels[i].htmlFor == idVal)
+                        return labels[i];
+                }
+            }
+            var renamePostalCode = function() {
+                if(getWindowWidth() > 750) {
+                    findAncestor(document.getElementById('checkout_shipping_address_country'), 'field--three-eights').style.width = '31.5%';
+                    findAncestor(document.getElementById('checkout_shipping_address_province'), 'field--three-eights').style.width = '31.5%';
+                    findAncestor(document.getElementById('checkout_shipping_address_zip'), 'field--quarter').style.width = '37%';
+                }
+
+                var labelElem = findLabelForControl(document.getElementById('checkout_shipping_address_zip'));
+                labelElem.innerHTML = 'Codigo Postal y Colonia';
+            }
+            var renameAddress2 = function() {
+                if(getWindowWidth() > 750) {
+                    findAncestor(document.getElementById('checkout_shipping_address_address1'), 'field').classList.remove("field--two-thirds");
+                    findAncestor(document.getElementById('checkout_shipping_address_address2'), 'field').classList.remove("field--third");
+                }
+
+                var elem = document.getElementById('checkout_shipping_address_address2');
+                elem.placeholder = 'Número interior 3, departamento 3, colonia, etc. (opcional)';
+            }
+
+            // window.addEventListener('load', renameAddress2);
+        }
+        /* endregion */
+
+        var changePayUAppearance = function() {
+            var all_logos = document.querySelectorAll('.offsite-payment-gateway-logo');
+
+            all_logos.forEach(function(logo) {
+                if (logo.alt == 'PayU Latam') {
+                    logo.classList.add('hidden');
+                    var the_span = logo.nextElementSibling;
+                    the_span.innerHTML = "Pago con tarjeta de crédito y débito";
+                    the_span.classList.remove('visually-hidden');
+
+                    var the_option = findAncestor(logo, 'radio-wrapper');
+                    var card_icons = the_option.querySelector('.radio__label__accessory ul');
+                    var li = document.createElement("li");
+                    li.classList.add('payment-icon');
+                    li.classList.add('payment-icon--discover');
+                    li.setAttribute("data-payment-icon", "discover");
+                    card_icons.appendChild(li);
+                } else if (logo.alt == 'PayPal') {
+                    findAncestor(logo, 'radio-wrapper').querySelector('.radio__label__accessory ul').classList.add('hidden');
+                }
+            });
+        };
+
+        document.addEventListener('DOMContentLoaded', changePayUAppearance);
+    </script>
   </head>
   <body>
   <div id="header" class="cart">
