@@ -71,6 +71,13 @@
     "sections": {
       "floatie_bestsellers_html": "<span>Floaties <\/span><em>más vendidos<\/em>"
     },
+    "homepage": {
+      "exclusive_collaborations": "Colaboraciones Exclusivas",
+      "collaborations_only_fk": "Colaboraciones Exclusivas solo en Floatie Kings!"
+    },
+    "insta": {
+      "insta_title_html": "<span>Lo mejor de nuestro <\/span><em>Instagram<\/em>"
+    },
     "misc": {
       "definite_article": "El",
       "summer_story_html": "<nobr>Cada verano tiene<\/nobr> <nobr>su propia história ;)<\/nobr>",

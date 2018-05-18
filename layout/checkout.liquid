@@ -118,7 +118,7 @@
           </div>
           <div class="sidebar__content">
             {{ content_for_order_summary }}
-            {%  include 'installment-notification' with checkout.total_price %}
+            {% comment %}{%  include 'installment-notification' with checkout.total_price %}{% endcomment %}
           </div>
         </div>
         <div class="main" role="main">
