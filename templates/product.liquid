@@ -117,7 +117,7 @@
             <h1 class="title" itemprop="name">{{ product.title }}</h1>
           </div>
 
-          <div id="price" class="product-price">
+          <div class="product-price">
             {% if product.compare_at_price_max > product.price %}
               <del>{{ product.compare_at_price_max | money }}</del>
               <span class="sale-price">{{ product.price | money }}</span>
@@ -141,7 +141,7 @@
           </div>
 
           <div class="add-ons-section">
-            <div class="header">Adicionar ao carrinho:</div>
+            <div class="header">{{ 'products.general.add_these' | t }}</div>
             <div class="add-ons-wrap">
               {% assign counter = 0 %}
 
@@ -296,19 +296,20 @@
               <img src="{{ info.large }}" title="{{ product.title | escape }}" />
               <div class="p-info-note">
                 {% unless product.handle contains 'pump' %}
-                  <span class="heading">Todas las compras incluyen:</span>
+                  <!--<span class="heading">Todas las compras incluyen:</span>
                   <ul>
                     <li><span>Floatie inflable gigante</span></li>
-                    <!--<li><span>Kit de parches para primeros auxilios</span></li>
-                    <li><span>Bolsa para transportar el Floatie</span></li>-->
+                    <li><span>Kit de parches para primeros auxilios</span></li>
+                    <li><span>Bolsa para transportar el Floatie</span></li>
                     <li><span>Manual del usuario de FloatieKings</span></li>
-                  </ul>
+                  </ul>-->
                 {% else %}
                   <span class="heading">La bomba SuperPumb 2000 incluye:</span>
                   <ul>
                     <li><span>3 boquillas</span></li>
                     <li><span>Bomba de aíre electrónica</span></li>
                     <li><span>Compatible con la corriente eléctrica en México</span></li>
+                    <li><span>Manual del usuario</span></li>
                   </ul>
                 {% endunless %}
               </div>
@@ -503,7 +504,6 @@
     function initBxSlider() {
         var autostart = $('.bxslider li').length > 1 ? true : false;
 
-        console.log($('.bxslider'));
         $('.bxslider').bxSlider({
             responsive: true,
             touchEnabled: true,

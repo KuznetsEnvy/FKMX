@@ -250,7 +250,8 @@
     "general": {
       "from": "From",
       "quick_buy_html": "Quick shop",
-      "full_details": "Full details"
+      "full_details": "Full details",
+      "add_these": "Agregar estos:"
     },
     "product": {
       "back_to_html": "Back to:",
