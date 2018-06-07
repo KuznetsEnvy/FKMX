@@ -125,7 +125,7 @@
               <span class="price amount">{{ product.price | money }}</span>
             {% endif %}
           </div>
-          {% comment %}{%  include 'installment-notification' with product.price %}{% endcomment %}
+          {%  include 'installment-notification' with product.price %}
           <div class='jdgm-widget jdgm-preview-badge' data-id='{{ product.id }}'>{{ product.metafields.judgeme.badge }}</div>
 
           <div class="visible-mobile">

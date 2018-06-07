@@ -28,6 +28,10 @@
       "results_title": "Search results",
       "placeholder": "Search terms...",
       "read_more": "Read more"
+    },
+    "installments": {
+      "times_by": "veces de",
+      "without_interest": "sin intereses"
     }
   },
   "layout": {

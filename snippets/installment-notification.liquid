@@ -5,5 +5,6 @@
     <rect x="73.09" y="328.9" width="73.09" height="36.55" />
     <rect x="182.73" y="328.9" width="109.63" height="36.55" />
   </svg>
-  4 veces de {{ installment-notification | divided_by: 4 | money }} sin intereses
+  {%- assign divider = 6 -%}
+  {{ divider }} {{ 'general.installments.times_by' | t }} {{ installment-notification | divided_by: divider | money }} {{ 'general.installments.without_interest' | t }}
 </div>
