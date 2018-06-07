@@ -190,3 +190,45 @@ $sunglow: rgba(255,217,39,1);
     margin-right: 0.5em;
   }
 }
+
+.wyustit{
+  position:relative;z-index:1;text-align:center;
+  span {
+    background:#fafafa;padding:0 15px;
+  }
+  &:before {
+    border-top: 1px solid #dfdfdf;
+    content: "";
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
+  }
+}
+.wyuscs-wrapper{
+	display:table;vertical-align:middle;width:100%;border-spacing:0px 20px
+}
+.wyuscs {
+    display: table-row;
+    padding-bottom: 20px;
+}
+.wyuscs1, .wyuscs2 {
+    display: table-cell;
+    vertical-align: middle;
+}
+.wyuscs1 {
+    width: 20%;
+    font-size: 15px;
+}
+.wyuscs2 {
+    width: 80%;
+}
+.wyuscs2 span {
+    font-size: 14px;
+    font-weight: 700;
+    color: #666;
+}

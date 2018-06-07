@@ -19,6 +19,9 @@
   {% if page_description %}
     <meta name="description" content="{{ page_description | escape }}"/>
   {% endif %}
+  {% if template contains 'index' %}
+  	<meta name="google-site-verification" content="ej_9Tn_HhftOv20PcNyvhVHL38yF-Rju5LoQi-tY3lU" />
+  {% endif %}
   <meta name="google-site-verification" content="7_hBlyoMBrJA-t3GikJzqVY1SlNa84j0gvInIV42WS0"/>
   <meta name="google-site-verification" content="llbVWBEQ_JnNIeMNkq6UuWfaVcjN3TK1h45sbi7HRnA"/>
   {% comment %}<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>{% endcomment %}

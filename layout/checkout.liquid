@@ -119,6 +119,25 @@
           <div class="sidebar__content">
             {{ content_for_order_summary }}
             {% comment %}{%  include 'installment-notification' with checkout.total_price %}{% endcomment %}
+            <div style="position:relative;padding:10px 0px">
+               <div class="wyustit"><span>¿Por qué elegirnos?</span></div>
+               <div class="wyuscs-wrapper">
+                  <div class="wyuscs">
+                     <div class="wyuscs1"><img src="https://cdn.shopify.com/s/files/1/1319/2435/t/4/assets/money-back.png"></div>
+                     <div class="wyuscs2">
+                        <span>30 días de garantía de satisfacción con devolución de dinero</span>
+                        <p>Si no está satisfecho con sus productos, realizaremos un reembolso completo, sin preguntas.</p>
+                     </div>
+                  </div>
+                  <div class="wyuscs">
+                     <div class="wyuscs1"><img src="https://cdn.shopify.com/s/files/1/1319/2435/t/4/assets/mail-truck.png"></div>
+                     <div class="wyuscs2">
+                        <span>Más de 200,000 pedidos enviados con éxito</span>
+                        <p>Hemos hecho tantos clientes satisfechos como pedidos que enviados. Simplemente tienes que unirte a nuestra gran familia.</p>
+                     </div>
+                  </div>
+               </div>
+            </div>            
           </div>
         </div>
         <div class="main" role="main">
@@ -129,6 +148,7 @@
           </div>
           <div class="main__content">
             {{ content_for_layout }}
+            
           </div>
           <div class="main__footer">
             {{ content_for_footer }}
